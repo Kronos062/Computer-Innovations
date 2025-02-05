@@ -1,94 +1,290 @@
-body {
-    margin: 0;
-    padding: 0;
+:root {
+  --white: 47deg, 98%, 95%;
+  --citrus: 47deg, 95%, 52%;
+  --orange: 23deg, 100%, 53%;
+  --sanguine: 347deg, 100%, 61%;
+  --pink: 346deg, 98%, 55%;
+  --electro: 181deg, 79%, 54%;
+  --purple: 261deg, 56%, 15%;
+  --night: 261deg, 89%, 7%;
+  --violet: 284deg, 80%, 20%;
+  
+  --sky-line: 7px;
+  --sun-size: 50dvh;
+  --ground-size: 45dvh;
+  --ground-line: 23px;
+  --ground-speed: 8s;
+  
+  --ratio-x: 0;
+  --ratio-y: 0;
 }
 
-#main-header {
-    background-color: #933283;
-    color: white;
-    padding: 20px;
-    text-align: right;
-}
+.synthwave {
+  position: absolute;
+  z-index: 0;
+  
+  height: 100dvh;
+  width: 100dvw;
+  
+  overflow: clip;
+  
+  background-color: hsl(var(--night));
+  background-image: linear-gradient(to bottom, hsla(var(--white), .05) 1px, transparent 1px);
+  background-size: 1px var(--sky-line);
+  
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: 1;
 
-
-#main-header nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: inline-block;
-}
-
-#main-header nav ul li {
-    display: inline-block;
-    margin-right: 10px;
-}
-
-#main-header nav a {
-    color: white;
-    text-decoration: none;
-}
-
-#main-header nav ul li a {
-    text-decoration: none;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-}
-
-.descargar-btn {
-    background-color: #dc005d;
-}
-
-.ticketing-btn {
-    background-color: #eebb16;
-}
-
-#login-btn {
-    background-color: #0beadc;
-    color: black;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-}
-
-#gif-fondo {
-    position: relative; 
-    height: 100vh;
-}
-
-#gif-fondo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-#fondo-negro {
-    position: absolute; 
     top: 0;
+    bottom: 0;
+    right: 0;
     left: 0;
+
+    background-image: radial-gradient(circle at 50%, transparent calc(var(--sun-size) - 10dvw), hsla(var(--sanguine), .3));
+    mix-blend-mode: soft-light;
+  }
+}
+
+.sun {
+  height: var(--sun-size);
+  width: var(--sun-size);
+  
+  position: absolute;
+  z-index: 2;
+
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  
+  transform: translate(
+    calc(var(--ratio-x) * 1dvw),
+    calc(var(--ratio-y) * -1dvh)
+  );
+  
+  filter:
+    drop-shadow(0 0 5px hsla(var(--sanguine), .1))
+    drop-shadow(0 0 10px hsla(var(--sanguine), .1))
+    drop-shadow(0 0 15px hsla(var(--sanguine), .1))
+    drop-shadow(0 0 20px hsla(var(--sanguine), .05))
+    drop-shadow(0 0 25px hsla(var(--sanguine), .05))
+    drop-shadow(0 0 30px hsla(var(--sanguine), .05))
+    drop-shadow(0 0 35px hsla(var(--sanguine), .05))
+    drop-shadow(0 0 40px hsla(var(--sanguine), .05))
+    drop-shadow(0 0 60px hsla(var(--sanguine), .05))
+    drop-shadow(0 0 80px hsla(var(--sanguine), .05))
+    drop-shadow(0 -2px 5px hsl(var(--sanguine)));
+  
+  overflow: hidden;
+  
+  &::after {
+    content: '';
+    
+    --mask-show: rgba(0, 0, 0, 1);
+    --mask-hide: rgba(0, 0, 0, 0);
+
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
+    
+    backface-visibility: hidden;
+    border-radius: 50%;
+
+    background-image: linear-gradient(to top, hsl(var(--pink)) 40%, hsl(var(--orange)) 60%, hsl(var(--citrus)) 95%);
+
+    box-shadow:
+      inset 0 -30px 30px -5px hsl(var(--orange)),
+      inset 0 -15px 25px -20px hsl(var(--citrus));
+    
+    mask-size: auto, auto 70%;
+    mask-position: top, bottom;
+    mask-repeat: no-repeat;
+    
+    mask-image:
+      linear-gradient(
+        var(--mask-show) 30.1%,
+        var(--mask-hide) 30.1%
+      ),
+      linear-gradient(
+        to bottom,
+        var(--mask-show) 0,
+        /* 30 / 3 */
+        var(--mask-show) 20px,
+        var(--mask-hide) 20px,
+        var(--mask-hide) 23px,
+        var(--mask-show) 23px,
+        /* 20 / 5 */
+        var(--mask-show) 43px,
+        var(--mask-hide) 43px,
+        var(--mask-hide) 48px,
+        var(--mask-show) 48px,
+        /* 20 / 8 */
+        var(--mask-show) 68px,
+        var(--mask-hide) 68px,
+        var(--mask-hide) 76px,
+        var(--mask-show) 76px,
+        /* 20 / 13 */
+        var(--mask-show) 96px,
+        var(--mask-hide) 96px,
+        var(--mask-hide) 109px,
+        var(--mask-show) 109px,
+        /* 20 / 21 */
+        var(--mask-show) 129px,
+        var(--mask-hide) 129px,
+        var(--mask-hide) 150px,
+        var(--mask-show) 150px,
+        /* 20 / 26 */
+        var(--mask-show) 170px,
+        var(--mask-hide) 170px,
+        var(--mask-hide) 196px,
+        var(--mask-show) 196px,
+        /* 20 / 34 */
+        var(--mask-show) 216px,
+        var(--mask-hide) 216px,
+        var(--mask-hide) 250px,
+        var(--mask-show) 250px,
+        /* 20 / 34 */
+        var(--mask-show) 270px,
+        var(--mask-hide) 270px,
+        var(--mask-hide) 304px,
+        var(--mask-show) 304px,
+        
+        var(--mask-show) 400px
+      );
+  }
+}
+
+.ground {
+  height: calc(var(--ground-size) + 1dvh);
+  width: 120dvw;
+  
+  position: absolute;
+  left: -10dvw;
+  bottom: -1dvh;
+  z-index: 3;
+  
+  perspective: var(--ground-size);
+  perspective-origin: top center;
+  transform-style: preserve-3d;
+  transform:
+    translate(calc(var(--ratio-x) * 1dvw), calc(var(--ratio-y) * 1dvh))
+    rotateZ(calc(var(--ratio-x) * -0.5deg));
+  
+  border-top: solid 1px hsla(var(--electro), .3);
+  background-color: hsl(var(--purple));
+  background-image: radial-gradient(100% 60% at bottom, hsla(var(--electro), .1), hsla(var(--purple), 1));
+  box-shadow:
+    0 3px 10px 2px hsla(var(--white), .2),
+    0 2px 20px 2px hsla(var(--electro), .3);
+  
+  &::before {
+    --alpha: .2;
+    content: '';
+    
+    display: block;
+    width: 100%;
+    height: 100dvh;
+    
+    position: absolute;
+    top: 0;
+    
+    transform-origin: top center;
+    transform: rotateX(76deg) translate3d(calc(var(--ratio-x) * 1dvw), 0, 0);
+    backface-visibility: hidden;
+
+    background-image:
+      linear-gradient(to bottom, hsla(var(--electro), var(--alpha)) 1px, transparent 1px),
+      linear-gradient(to right, hsla(var(--electro), var(--alpha)) 1px, transparent 1px);
+    background-size: 1px var(--ground-line), calc(2 * var(--ground-line)) 1px;
+    background-position: 0% 0%, center;
+    mix-blend-mode: color-dodge;
+    
+    animation: ground-lines var(--ground-speed) linear infinite;
+    
+  }
+}
+
+.mountain {
+  --mountain-z: -1px;
+  --mountain-x: 0;
+  --mountain-y: 0;
+  
+  height: calc(var(--mountain-size) * 0.66);
+  width: var(--mountain-size);
+  
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: -0.5dvh;
+  
+  transform-origin: bottom center;
+  transform: translate3d(var(--mountain-x), var(--mountain-y), var(--mountain-z));
+  
+  backface-visibility: hidden;
+  
+  &::before {
+    content: '';
+    
+    display: block;
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
-    align-items: center;
+    
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+  
+    background-image: linear-gradient(var(--mountain-gradient), hsl(var(--violet)) 50%, hsl(var(--purple)) 50%);
+    background-position-x: var(--mountain-bg-position);
+    background-size: 150% 100%;
+  }
+  
+  &:nth-child(1),
+  &:nth-child(2) {
+    --mountain-gradient: -110deg;
+    --mountain-bg-position: 28%;
+  }
+  &:nth-child(1) {
+    --mountain-size: 24dvh;
+    filter: brightness(0.8) drop-shadow(0 0 10px hsla(var(--sanguine), .05));
+    --mountain-x: -145%;
+    --mountain-y: calc(var(--ratio-y) * -1vh);
+  }
+  &:nth-child(2) {
+    --mountain-size: 30dvh;
+    filter: drop-shadow(0 0 10px hsla(var(--sanguine), .05));
+    --mountain-x: calc(-85% + var(--ratio-x) * 0.5dvw);
+  }
+  &:nth-child(3),
+  &:nth-child(4) {
+    --mountain-gradient: 110deg;
+    --mountain-bg-position: 73%;
+  }
+  &:nth-child(3) {
+    --mountain-size: 38dvh;
+    filter: drop-shadow(0 0 10px hsla(var(--sanguine), .05));
+    --mountain-x: 85%;
+    --mountain-y: calc(var(--ratio-y) * -1dvh);
+  }
+  &:nth-child(4) {
+    --mountain-size: 28dvh;
+    filter: brightness(0.8) drop-shadow(0 0 10px hsla(var(--sanguine), .05));
+    --mountain-x: calc(85% + var(--ratio-x) * 0.5dvw);
+  }
 }
 
-.content-div, .content-div2 {
-    background-color: rgba(255, 255, 255, 0.2);
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    opacity: 0;
-    transform: translateY(50px); 
-    transition: opacity 0.5s, transform 0.5s;
-}
-
-.content-div.scrolled, .content-div2.scrolled {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.content-div2 {
-    text-align: right;
+@keyframes ground-lines {
+	0% {
+		background-position: 0% 0%, center;
+	}
+	100% {
+		background-position: 0% 50%, center;
+	}
 }
