@@ -62,7 +62,7 @@ html, body {
   width: var(--sun-size);
   
   position: absolute;
-  z-index: 2;
+  z-index: 1;
 
   top: 0;
   bottom: 0;
@@ -178,7 +178,7 @@ html, body {
   position: absolute;
   left: -10dvw;
   bottom: -1dvh;
-  z-index: 3;
+  z-index: 2;
   
   perspective: var(--ground-size);
   perspective-origin: top center;
@@ -222,6 +222,8 @@ html, body {
 }
 
 .mountain-container {
+  position: absolute;
+  bottom: 0;
   perspective: 1000px;
 }
 
@@ -234,7 +236,8 @@ html, body {
   width: var(--mountain-size);
   
   position: absolute;
-  bottom: 100%;
+  z-index: 3;
+  bottom: var(--ground-size);
   left: 0;
   right: 0;
   margin-left: auto;
