@@ -14,7 +14,7 @@ const initialPositions = Array.from(mountains).map((mountain) => {
 
 let lastX = 0, lastY = 0;
 let ticking = false;
-let scrollDepth = -4000;
+let scrollDepth = -7600;
 let activeIndex = 0;
 
 function updatePositions(x, y) {
@@ -62,18 +62,18 @@ window.addEventListener('mousemove', (event) => {
 window.addEventListener("wheel", (event) => {
     event.preventDefault();
     scrollDepth += event.deltaY * 3;
-    scrollDepth = Math.min(Math.max(scrollDepth, -4000), 0);
+    scrollDepth = Math.min(Math.max(scrollDepth, -7600), 0); // Ajustado el límite
 
     sections.forEach((section, index) => {
         if (index === activeIndex) {
-            let scaleValue = Math.min(1, 0.2 + (scrollDepth + 4000) / 4000);
-            let zOffset = -4000 + scrollDepth;
+            let scaleValue = Math.min(1, 0.2 + (scrollDepth + 7600) / 7600);
+            let zOffset = -7600 + scrollDepth;
             
             if (scaleValue >= 1) {
-                section.style.opacity = 1 - (scrollDepth + 4000) / 200;
-                if (scrollDepth > -3800) {
+                section.style.opacity = 1 - (scrollDepth + 7600) / 200;
+                if (scrollDepth > -7600) {
                     activeIndex = (activeIndex + 1) % sections.length;
-                    scrollDepth = -4000;
+                    scrollDepth = -7600;
                 }
             } else {
                 section.style.opacity = 1;
@@ -81,7 +81,7 @@ window.addEventListener("wheel", (event) => {
             
             section.style.transform = `translate(-50%, -50%) translateZ(${zOffset}px) scale(${scaleValue})`;
         } else {
-            section.style.transform = 'translate(-50%, -50%) translateZ(-4000px) scale(0.2)';
+            section.style.transform = 'translate(-50%, -50%) translateZ(-7600px) scale(0.2)';
             section.style.opacity = 0;
         }
     });
