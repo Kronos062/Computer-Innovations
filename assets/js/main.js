@@ -1,6 +1,7 @@
 const sun = document.querySelector('.sun');
 const mountains = document.querySelectorAll('.mountain');
 const ground = document.querySelector('.ground');
+const sections = document.querySelectorAll(".section");
 
 const initialPositions = Array.from(mountains).map((mountain) => {
     const transform = getComputedStyle(mountain).transform;
@@ -13,6 +14,8 @@ const initialPositions = Array.from(mountains).map((mountain) => {
 
 let lastX = 0, lastY = 0;
 let ticking = false;
+let scrollDepth = -4000;
+let activeIndex = 0;
 
 function updatePositions(x, y) {
     sun.style.transform = `translate3d(${x * 30}px, ${y * 30}px, 0)`;
@@ -55,3 +58,31 @@ window.addEventListener('mousemove', (event) => {
         ticking = true;
     }
 });
+
+window.addEventListener("wheel", (event) => {
+    event.preventDefault();
+    scrollDepth += event.deltaY * 3;
+    scrollDepth = Math.min(Math.max(scrollDepth, -4000), 0);
+
+    sections.forEach((section, index) => {
+        if (index === activeIndex) {
+            let scaleValue = Math.min(1, 0.2 + (scrollDepth + 4000) / 4000);
+            let zOffset = -4000 + scrollDepth;
+            
+            if (scaleValue >= 1) {
+                section.style.opacity = 1 - (scrollDepth + 4000) / 200;
+                if (scrollDepth > -3800) {
+                    activeIndex = (activeIndex + 1) % sections.length;
+                    scrollDepth = -4000;
+                }
+            } else {
+                section.style.opacity = 1;
+            }
+            
+            section.style.transform = `translate(-50%, -50%) translateZ(${zOffset}px) scale(${scaleValue})`;
+        } else {
+            section.style.transform = 'translate(-50%, -50%) translateZ(-4000px) scale(0.2)';
+            section.style.opacity = 0;
+        }
+    });
+}, { passive: false });
