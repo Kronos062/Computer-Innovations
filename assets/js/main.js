@@ -18,11 +18,27 @@ function updatePositions(x, y) {
     sun.style.transform = `translate3d(${x * 30}px, ${y * 30}px, 0)`;
 
     mountains.forEach((mountain, index) => {
-        const intensity = (index + 1) * 5;
+        let intensity;
+        switch(index) {
+            case 0:
+                intensity = 2;
+                break;
+            case 1:
+                intensity = 3;
+                break;
+            case 2:
+                intensity = 4;
+                break;
+            case 3:
+                intensity = 4;
+                break;
+            default:
+                intensity = 3;
+        }
         const initialX = initialPositions[index].x;
         const initialY = initialPositions[index].y;
         mountain.style.transform = `translate3d(${initialX + x * intensity}px, ${initialY + y * intensity}px, 0)`;
-    });
+    });    
 
     ground.style.transform = `translate3d(${x * 10}px, ${y * 5}px, 0)`;
 }
