@@ -1,35 +1,38 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const mountain1 = document.getElementById('mountain1');
-    const mountain2 = document.getElementById('mountain2');
-    const mountain3 = document.getElementById('mountain3');
-    const mountain4 = document.getElementById('mountain4');
+    console.log('DOM fully loaded and parsed');
+
+    const mountains = document.querySelectorAll('.mountain');
     let clickSequence = [];
     const correctSequence = ['mountain4', 'mountain1', 'mountain3', 'mountain2'];
 
-    function handleMountainClick(mountainId) {
+    function handleMountainClick(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        const mountainId = event.currentTarget.id;
+        console.log('Clicked mountain:', mountainId);
         clickSequence.push(mountainId);
         if (clickSequence.length > 4) {
-            clickSequence.shift(); // Elimina el primer elemento si hay más de 4
+            clickSequence.shift();
         }
-        console.log('Secuencia actual:', clickSequence); // Para depuración
+        console.log('Current sequence:', clickSequence);
 
         if (arraysEqual(clickSequence, correctSequence)) {
             showFullscreenGif();
-            clickSequence = []; // Reinicia la secuencia
+            clickSequence = [];
         }
     }
 
-    mountain1.addEventListener('click', () => handleMountainClick('mountain1'));
-    mountain3.addEventListener('click', () => handleMountainClick('mountain3'));
-    mountain2.addEventListener('click', () => handleMountainClick('mountain2'));
-    mountain4.addEventListener('click', () => handleMountainClick('mountain4'));
+    mountains.forEach(mountain => {
+        console.log('Adding listener to:', mountain.id);
+        mountain.addEventListener('mousedown', handleMountainClick, true);
+    });
 
     function arraysEqual(arr1, arr2) {
         return arr1.length === arr2.length && arr1.every((value, index) => value === arr2[index]);
     }
 
     function showFullscreenGif() {
-        console.log('Mostrando GIF');
+        console.log('Showing GIF');
         const gifContainer = document.createElement('div');
         gifContainer.style.cssText = `
             position: fixed;
@@ -46,5 +49,5 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             document.body.removeChild(gifContainer);
         }, 5000);
-    }    
+    }
 });

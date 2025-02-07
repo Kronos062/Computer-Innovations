@@ -14,30 +14,15 @@ const initialPositions = Array.from(mountains).map((mountain) => {
 
 let lastX = 0, lastY = 0;
 let ticking = false;
-let scrollDepth = -7600;
+let scrollDepth = -500;
 let activeIndex = 0;
+let lastScrollDepth = -500;
 
 function updatePositions(x, y) {
     sun.style.transform = `translate3d(${x * 30}px, ${y * 30}px, 0)`;
 
     mountains.forEach((mountain, index) => {
-        let intensity;
-        switch(index) {
-            case 0:
-                intensity = 2;
-                break;
-            case 1:
-                intensity = 3;
-                break;
-            case 2:
-                intensity = 4;
-                break;
-            case 3:
-                intensity = 4;
-                break;
-            default:
-                intensity = 3;
-        }
+        let intensity = [2, 3, 4, 4][index] || 3;
         const initialX = initialPositions[index].x;
         const initialY = initialPositions[index].y;
         mountain.style.transform = `translate3d(${initialX + x * intensity}px, ${initialY + y * intensity}px, 0)`;
@@ -61,28 +46,36 @@ window.addEventListener('mousemove', (event) => {
 
 window.addEventListener("wheel", (event) => {
     event.preventDefault();
-    scrollDepth += event.deltaY * 3;
-    scrollDepth = Math.min(Math.max(scrollDepth, -7600), 0); // Ajustado el límite
+    scrollDepth += event.deltaY * 0.5;
+    scrollDepth = Math.min(Math.max(scrollDepth, -500), 100);
+
+    let scrollDirection = scrollDepth > lastScrollDepth ? 'down' : 'up';
 
     sections.forEach((section, index) => {
         if (index === activeIndex) {
-            let scaleValue = Math.min(1, 0.2 + (scrollDepth + 7600) / 7600);
-            let zOffset = -7600 + scrollDepth;
+            let scaleValue = Math.min(2, 0.8 + (scrollDepth + 500) / 600 * 1.2);
+            let zOffset = -500 + scrollDepth;
             
-            if (scaleValue >= 1) {
-                section.style.opacity = 1 - (scrollDepth + 7600) / 200;
-                if (scrollDepth > -7600) {
+            section.style.opacity = 1;
+            
+            if (scrollDepth >= 0) {
+                scaleValue = 2;
+                section.style.opacity = 1 - scrollDepth / 100;
+                if (scrollDepth >= 100 && scrollDirection === 'down') {
                     activeIndex = (activeIndex + 1) % sections.length;
-                    scrollDepth = -7600;
+                    scrollDepth = -500;
                 }
-            } else {
-                section.style.opacity = 1;
+            } else if (scrollDepth <= -450 && scrollDirection === 'up' && activeIndex > 0) {
+                activeIndex--;
+                scrollDepth = 100;
             }
             
             section.style.transform = `translate(-50%, -50%) translateZ(${zOffset}px) scale(${scaleValue})`;
         } else {
-            section.style.transform = 'translate(-50%, -50%) translateZ(-7600px) scale(0.2)';
+            section.style.transform = 'translate(-50%, -50%) translateZ(-500px) scale(0.8)';
             section.style.opacity = 0;
         }
     });
+
+    lastScrollDepth = scrollDepth;
 }, { passive: false });
