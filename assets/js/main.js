@@ -26,7 +26,7 @@ function updatePositions(x, y) {
         const initialX = initialPositions[index].x;
         const initialY = initialPositions[index].y;
         mountain.style.transform = `translate3d(${initialX + x * intensity}px, ${initialY + y * intensity}px, 0)`;
-    });    
+    });
 
     ground.style.transform = `translate3d(${x * 10}px, ${y * 5}px, 0)`;
 }

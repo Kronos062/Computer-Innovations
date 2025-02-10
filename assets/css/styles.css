@@ -234,7 +234,11 @@ html, body {
   
   height: calc(var(--mountain-size) * 0.66);
   width: var(--mountain-size);
-  
+
+  pointer-events: auto;
+  position: relative;
+  z-index: 20;
+
   position: absolute;
   z-index: 3;
   bottom: var(--ground-size);
@@ -322,6 +326,7 @@ html, body {
   justify-content: center;
   align-items: center;
   z-index: 10;
+  pointer-events: none;
 }
 
 .section {
@@ -334,10 +339,10 @@ html, body {
 
 .content-div, .content-div2, .content-div3, .content-div4, .content-div5 {
   position: absolute;
-  width: 60%;
-  padding: 50px;
+  width: 500px; /* Ancho aumentado */
+  height: 500px; /* Altura igual al ancho para que sea un cuadrado */
   text-align: center;
-  border-radius: 20px;
+  border-radius: 20px; /* Bordes redondeados opcionales */
   transition: transform 0.3s ease-out, opacity 0.3s ease-out;
   transform-origin: center center;
   opacity: 0;
@@ -345,33 +350,90 @@ html, body {
 
 .section:nth-child(1) {
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
-  background: #463191;
-  transform: translate(-50%, -50%) translateZ(-2000px) scale(0.1);}
+  background: #463191; /* Púrpura oscuro */
+  transform: translate(-50%, -50%) translateZ(-2000px) scale(0.1);
+}
 
 .section:nth-child(2) {
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
-  background: #E72696;
-  transform: translate(-50%, -50%) translateZ(-1600px) scale(0.1);}
+  background: #E72696; /* Rosa fuerte */
+  transform: translate(-50%, -50%) translateZ(-1600px) scale(0.1);
+}
 
 .section:nth-child(3) {
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
-  background: #FACF31;
-  transform: translate(-50%, -50%) translateZ(-1200px) scale(0.1);}
+  background: #FACF31; /* Amarillo brillante */
+  transform: translate(-50%, -50%) translateZ(-1200px) scale(0.1);
+}
 
 .section:nth-child(4) {
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
-  background: #F99B1D;
+  background: #F99B1D; /* Naranja vibrante */
   transform: translate(-50%, -50%) translateZ(-800px) scale(0.2);
 }
 
 .section:nth-child(5) {
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
-  background: #5EDBA5;
+  background: #5EDBA5; /* Verde menta */
   transform: translate(-50%, -50%) translateZ(-400px) scale(0.2);
 }
+
 .content-div, .content-div2, .content-div3, .content-div4, .content-div5 {
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
   background: #E72696;
   padding: 20px;
   transform: translateZ(-100px) scale(0.9);
+}
+
+/* Estilo Synthwave para los encabezados */
+.section h2 {
+  font-size: 3rem; /* Tamaño grande */
+  text-transform: uppercase; /* Texto en mayúsculas */
+  text-align: center; /* Centrado */
+  color: #ff0080; /* Rosa neón */
+  text-shadow: 
+      0 0 5px #ff0080, 
+      0 0 10px #ff0080, 
+      0 0 20px #ff0080,
+      0 0 30px #ff0080, 
+      0 0 40px #ff0080, 
+      0 0 50px #ff00ff;
+  margin-bottom: 20px;
+  font-family: 'Orbitron', sans-serif; /* Fuente retro futurista */
+}
+
+/* Encabezados */
+.section h2 {
+  font-size: 3rem; /* Tamaño grande */
+  text-transform: uppercase; /* Texto en mayúsculas */
+  text-align: center; /* Centrado */
+  color: #FFFFFF; /* Blanco puro */
+  text-shadow: 
+      0 0 2px #D3D3D3, /* Gris claro */
+      0 0 5px #A9A9A9, /* Gris medio */
+      0 0 10px #696969, /* Gris oscuro */
+      0 0 15px #000000; /* Negro */
+  margin-bottom: 20px;
+  font-family: 'Orbitron', sans-serif; /* Fuente retro futurista */
+}
+
+/* Párrafos */
+.section p {
+  font-size: 1.2rem; /* Tamaño mediano */
+  line-height: 1.6; /* Espaciado entre líneas */
+  text-align: center; /* Centrado */
+  color: #FFFFFF; /* Blanco puro */
+  text-shadow: 
+      0 0 2px #D3D3D3, /* Gris claro */
+      0 0 5px #A9A9A9, /* Gris medio */
+      0 0 10px #696969, /* Gris oscuro */
+      0 0 15px #000000; /* Negro */
+  font-family: 'Orbitron', sans-serif; /* Fuente retro futurista */
+}
+
+
+
+h2:hover {
+  animation: neon-glow infinite alternate ease-in-out;
+  animation-duration: 1.5s;
 }
