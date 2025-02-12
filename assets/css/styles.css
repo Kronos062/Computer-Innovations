@@ -317,7 +317,7 @@ html, body {
 
 .container {
   perspective: 2000px;
-  position: fixed; /* Cambiado de relative a fixed */
+  position: fixed;
   width: 100%;
   height: 100vh;
   top: 0;
@@ -327,6 +327,17 @@ html, body {
   align-items: center;
   z-index: 10;
   pointer-events: none;
+}
+
+.button {
+  color: white;
+  background-color: #03afaa;
+  height: 30px;
+  width: auto;
+  border-radius: 10px;
+  border: #000000;
+  border-width: 1px;
+  pointer-events: all;
 }
 
 .section {
@@ -339,10 +350,10 @@ html, body {
 
 .content-div, .content-div2, .content-div3, .content-div4, .content-div5 {
   position: absolute;
-  width: 500px; /* Ancho aumentado */
-  height: 500px; /* Altura igual al ancho para que sea un cuadrado */
+  width: 500px;
+  height: 500px;
   text-align: center;
-  border-radius: 20px; /* Bordes redondeados opcionales */
+  border-radius: 20px;
   transition: transform 0.3s ease-out, opacity 0.3s ease-out;
   transform-origin: center center;
   opacity: 0;
@@ -350,31 +361,31 @@ html, body {
 
 .section:nth-child(1) {
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
-  background: #463191; /* Púrpura oscuro */
+  background: #463191;
   transform: translate(-50%, -50%) translateZ(-2000px) scale(0.1);
 }
 
 .section:nth-child(2) {
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
-  background: #E72696; /* Rosa fuerte */
+  background: #E72696;
   transform: translate(-50%, -50%) translateZ(-1600px) scale(0.1);
 }
 
 .section:nth-child(3) {
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
-  background: #FACF31; /* Amarillo brillante */
+  background: #FACF31;
   transform: translate(-50%, -50%) translateZ(-1200px) scale(0.1);
 }
 
 .section:nth-child(4) {
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
-  background: #F99B1D; /* Naranja vibrante */
+  background: #F99B1D;
   transform: translate(-50%, -50%) translateZ(-800px) scale(0.2);
 }
 
 .section:nth-child(5) {
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
-  background: #5EDBA5; /* Verde menta */
+  background: #5EDBA5;
   transform: translate(-50%, -50%) translateZ(-400px) scale(0.2);
 }
 
@@ -385,12 +396,11 @@ html, body {
   transform: translateZ(-100px) scale(0.9);
 }
 
-/* Estilo Synthwave para los encabezados */
 .section h2 {
-  font-size: 3rem; /* Tamaño grande */
-  text-transform: uppercase; /* Texto en mayúsculas */
-  text-align: center; /* Centrado */
-  color: #ff0080; /* Rosa neón */
+  font-size: 3rem;
+  text-transform: uppercase;
+  text-align: center;
+  color: #ff0080;
   text-shadow: 
       0 0 5px #ff0080, 
       0 0 10px #ff0080, 
@@ -399,36 +409,34 @@ html, body {
       0 0 40px #ff0080, 
       0 0 50px #ff00ff;
   margin-bottom: 20px;
-  font-family: 'Orbitron', sans-serif; /* Fuente retro futurista */
+  font-family: 'Orbitron', sans-serif;
 }
 
-/* Encabezados */
 .section h2 {
-  font-size: 3rem; /* Tamaño grande */
-  text-transform: uppercase; /* Texto en mayúsculas */
-  text-align: center; /* Centrado */
-  color: #FFFFFF; /* Blanco puro */
+  font-size: 3rem;
+  text-transform: uppercase;
+  text-align: center;
+  color: #FFFFFF;
   text-shadow: 
-      0 0 2px #D3D3D3, /* Gris claro */
-      0 0 5px #A9A9A9, /* Gris medio */
-      0 0 10px #696969, /* Gris oscuro */
-      0 0 15px #000000; /* Negro */
+      0 0 2px #D3D3D3,
+      0 0 5px #A9A9A9,
+      0 0 10px #696969,
+      0 0 15px #000000;
   margin-bottom: 20px;
-  font-family: 'Orbitron', sans-serif; /* Fuente retro futurista */
+  font-family: 'Orbitron', sans-serif;
 }
 
-/* Párrafos */
 .section p {
-  font-size: 1.2rem; /* Tamaño mediano */
-  line-height: 1.6; /* Espaciado entre líneas */
-  text-align: center; /* Centrado */
-  color: #FFFFFF; /* Blanco puro */
+  font-size: 1.2rem;
+  line-height: 1.6;
+  text-align: center;
+  color: #FFFFFF;
   text-shadow: 
-      0 0 2px #D3D3D3, /* Gris claro */
-      0 0 5px #A9A9A9, /* Gris medio */
-      0 0 10px #696969, /* Gris oscuro */
-      0 0 15px #000000; /* Negro */
-  font-family: 'Orbitron', sans-serif; /* Fuente retro futurista */
+      0 0 2px #D3D3D3,
+      0 0 5px #A9A9A9,
+      0 0 10px #696969,
+      0 0 15px #000000;
+  font-family: 'Orbitron', sans-serif;
 }
 
 

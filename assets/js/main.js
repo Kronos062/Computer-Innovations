@@ -54,7 +54,7 @@ window.addEventListener("wheel", (event) => {
     sections.forEach((section, index) => {
         if (index === activeIndex) {
             let scaleValue = Math.min(2, 0.8 + (scrollDepth + 500) / 600 * 1.2);
-            let zOffset = -500 + scrollDepth;
+            let zOffset = -900 + scrollDepth;
             
             section.style.opacity = 1;
             
@@ -72,7 +72,7 @@ window.addEventListener("wheel", (event) => {
             
             section.style.transform = `translate(-50%, -50%) translateZ(${zOffset}px) scale(${scaleValue})`;
         } else {
-            section.style.transform = 'translate(-50%, -50%) translateZ(-500px) scale(0.8)';
+            section.style.transform = 'translate(-50%, -50%) translateZ(-900px) scale(0.8)';
             section.style.opacity = 0;
         }
     });
