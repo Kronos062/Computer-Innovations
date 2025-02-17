@@ -1,0 +1,83 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#main-header {
+    background-color: #933283;
+    color: white;
+    padding: 20px;
+    text-align: right;
+}
+
+#main-header nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#main-header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+#main-header nav ul li {
+    margin: 0;
+}
+
+#main-header nav ul li a,
+#login-btn {
+    display: block;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    width: 150px;
+    height: 50px;
+    line-height: 50px;
+    transform-origin: center;
+    transform: rotate(-45deg);
+    transition: transform 0.3s ease-in-out;
+}
+
+
+#main-header nav ul li a:hover,
+#login-btn:hover {
+    transform: rotate(-45deg) scale(1.1);
+}
+
+.main-btn {
+    background-color: #eebb16;
+}
+
+.ticketing-btn {
+    background-color: #dc005d;
+}
+
+#login-btn {
+    background-color: #0beadc;
+    color: black;
+}
+
+#main-header nav ul li + li,
+#login-btn {
+    margin-left: 10px;
+}
+
+#gif-fondo {
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+#gif-fondo img {
+    width: 100%;
+    height: 100%;
+}
+
+#fondo-negro {
+    background-color: black;
+    color: white;
+}
