@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C.I. - Login</title>
+    <link rel="stylesheet" href="../css/styles-login.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Iniciar Sesión</h1>
+        <form id="loginForm">
+            <div class="box">
+                <input type="text" name="email" id="email" placeholder="Introduce tu correo">
+            </div>
+            <div class="box">
+                <input type="password" name="password" id="password" placeholder="Introduce tu contraseña">
+            </div>
+            <button type="submit" class="btn">Entra</button>
+        </form>
+    </div> 
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+        
+            fetch('http://localhost:3000/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username: email, password: password }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    alert('Inicio de sesión exitoso');
+                    window.location.href = '../../main.html';
+                } else {
+                    alert('Error: ' + data.error);
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('Error al intentar iniciar sesión');
+            });
+        });
+        </script>
+        
+           
+</body>
+</html>
