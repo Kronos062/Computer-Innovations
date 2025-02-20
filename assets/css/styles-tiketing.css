@@ -2,73 +2,118 @@ body {
     margin: 0;
     padding: 0;
 }
+
 #main-header {
     background-color: #933283;
     color: white;
-    padding: 20px;
-    text-align: right;
 }
-#main-header nav ul {
+
+.header-container {
+    display: flex;
+    justify-content: space-between; /* Espaciado entre botones y logo */
+    align-items: center;
+}
+
+.logo-container {
+    flex: 0 0 auto; /* El logo no crece ni se encoge */
+}
+
+.logo {
+    height: 60px; /* Ajusta la altura del logo según sea necesario */
+    width: auto;
+    margin-left: 10px;
+}
+
+.buttons-header {
+    flex: 1; /* Ocupa el espacio restante */
+}
+
+.buttons-header ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    display: inline-block;
+    display: flex; /* Los botones estarán en línea horizontal */
+    justify-content: flex-start; /* Alinea los botones a la izquierda */
 }
-#main-header nav ul li {
-    display: inline-block;
-    margin-right: 10px;
-}
-#main-header nav a {
-    color: white;
-    text-decoration: none;
-}
-#main-header nav ul li a {
+
+.buttons-header ul li a {
+    display: flex;  /* Cambiamos a flex para un mejor control del alineamiento */
+    align-items: center;  /* Esto centrará el contenido verticalmente */
+    justify-content: center;  /* Esto centrará el contenido horizontalmente */
     text-decoration: none;
     color: white;
-    padding: 10px 20px;
-    border: none;
+    font-weight: bold;
+    text-align: center;
+    width: 170px; /* Ancho fijo para los botones */
+    height: 69px; /* Altura fija para los botones */
+    transition: background-color 0.2s ease; /* Transición suave para hover */
 }
-.descargar-btn {
-    background-color: #dc005d;
-}
+
+
+/* Estilos de los botones */
 .main-btn {
-    background-color: #eebb16;
+    background-color: #eebb16; /* Color del botón principal */
 }
-#login-btn {
-    background-color: #0beadc;
-    color: black;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
+
+.main-btn:hover {
+    background-color: #ffd026; /* Color al pasar el ratón sobre el botón principal */
 }
-#gif-fondo {
-    height: 100vh;
-    background-size: cover;
-    background-position: center;
-    position: relative;
+
+.descargar-btn {
+    background-color: #dc005d; /* Color del botón de ticketing */
 }
-#gif-fondo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+
+.descargar-btn:hover {
+    background-color: #ec1a6d; /* Color al pasar el ratón sobre el botón de ticketing */
 }
-#fondo-negro {
-    background-color: black;
-    color: white;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
+
+.login-btn {
+    background-color: #0beadc; /* Color del botón de inicio de sesión */
 }
-.content-div {
-    background-color: rgba(255, 255, 255, 0.2);
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 10px;
+
+.login-btn:hover {
+    background-color: #1bfaec; /* Color al pasar el ratón sobre el botón de inicio de sesión */
 }
-.content-div2 {
-    background-color: rgba(255, 255, 255, 0.2);
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    text-align: right;
+
+/* Media Queries para diseño responsive */
+@media only screen and (max-width: 768px) {
+    .header-container {
+        flex-direction: column; /* Cambia a columna en pantallas pequeñas */
+        align-items: center; /* Centra los elementos en pantallas pequeñas */
+        padding-bottom: 10px; /* Espacio adicional en la parte inferior */
+    }
+
+    .buttons-header ul {
+        flex-direction: column; /* Cambia los botones a una columna en pantallas pequeñas */
+        align-items: center; /* Centra los botones horizontalmente */
+        width: 100%; /* Asegura que ocupe todo el ancho disponible */
+    }
+
+    .buttons-header ul li {
+        margin-right: 0; /* Elimina margen derecho en pantallas pequeñas */
+    }
+
+    .buttons-header ul li a {
+        width: 200px; /* Ancho más grande para botones en pantallas pequeñas */
+        height: 40px; /* Altura reducida para botones en pantallas pequeñas */
+        line-height: 40px; /* Ajusta la altura de línea para centrar el texto verticalmente */
+        font-size: 14px; /* Tamaño de fuente reducido para pantallas pequeñas */
+    }
+
+    .logo-container {
+        margin-bottom: 10px; /* Espacio debajo del logo en pantallas pequeñas */
+    }
+}
+
+@media only screen and (max-width: 480px) {
+   .buttons-header ul li a {
+       width: 150px; /* Ancho más pequeño para botones en pantallas muy pequeñas */
+       height: 35px; /* Altura más pequeña para botones en pantallas muy pequeñas */
+       line-height: 35px; /* Ajusta la altura de línea para centrar el texto verticalmente */
+       font-size: 12px; /* Tamaño de fuente más pequeño para pantallas muy pequeñas */
+   }
+
+   .logo {
+       height: 40px; /* Reduce el tamaño del logo en pantallas muy pequeñas */
+   }
 }
