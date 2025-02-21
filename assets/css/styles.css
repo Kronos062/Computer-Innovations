@@ -125,42 +125,34 @@ html, body {
       linear-gradient(
         to bottom,
         var(--mask-show) 0,
-        /* 30 / 3 */
         var(--mask-show) 20px,
         var(--mask-hide) 20px,
         var(--mask-hide) 23px,
         var(--mask-show) 23px,
-        /* 20 / 5 */
         var(--mask-show) 43px,
         var(--mask-hide) 43px,
         var(--mask-hide) 48px,
         var(--mask-show) 48px,
-        /* 20 / 8 */
         var(--mask-show) 68px,
         var(--mask-hide) 68px,
         var(--mask-hide) 76px,
         var(--mask-show) 76px,
-        /* 20 / 13 */
         var(--mask-show) 96px,
         var(--mask-hide) 96px,
         var(--mask-hide) 109px,
         var(--mask-show) 109px,
-        /* 20 / 21 */
         var(--mask-show) 129px,
         var(--mask-hide) 129px,
         var(--mask-hide) 150px,
         var(--mask-show) 150px,
-        /* 20 / 26 */
         var(--mask-show) 170px,
         var(--mask-hide) 170px,
         var(--mask-hide) 196px,
         var(--mask-show) 196px,
-        /* 20 / 34 */
         var(--mask-show) 216px,
         var(--mask-hide) 216px,
         var(--mask-hide) 250px,
         var(--mask-show) 250px,
-        /* 20 / 34 */
         var(--mask-show) 270px,
         var(--mask-hide) 270px,
         var(--mask-hide) 304px,
