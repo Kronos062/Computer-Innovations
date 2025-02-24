@@ -46,7 +46,7 @@ window.addEventListener('mousemove', (event) => {
 
 window.addEventListener("wheel", (event) => {
     event.preventDefault();
-    scrollDepth += event.deltaY * 0.5;
+    scrollDepth += event.deltaY * 1.5;
     scrollDepth = Math.min(Math.max(scrollDepth, -500), 100);
 
     let scrollDirection = scrollDepth > lastScrollDepth ? 'down' : 'up';
@@ -61,7 +61,7 @@ window.addEventListener("wheel", (event) => {
             if (scrollDepth >= 0) {
                 scaleValue = 2;
                 section.style.opacity = 1 - scrollDepth / 100;
-                if (scrollDepth >= 100 && scrollDirection === 'down') {
+                if (scrollDepth >= 50 && scrollDirection === 'down') {
                     activeIndex = (activeIndex + 1) % sections.length;
                     scrollDepth = -500;
                 }
@@ -90,7 +90,7 @@ window.addEventListener("touchmove", (event) => {
     
     const touchEndY = event.touches[0].clientY;
     const deltaY = touchStartY - touchEndY;
-    scrollDepth += deltaY * 0.5;
+    scrollDepth += deltaY * 2;
     scrollDepth = Math.min(Math.max(scrollDepth, -500), 100);
 
     let scrollDirection = scrollDepth > lastScrollDepth ? 'down' : 'up';
@@ -105,7 +105,7 @@ window.addEventListener("touchmove", (event) => {
             if (scrollDepth >= 0) {
                 scaleValue = 2;
                 section.style.opacity = 1 - scrollDepth / 100;
-                if (scrollDepth >= 100 && scrollDirection === 'down') {
+                if (scrollDepth >= 50 && scrollDirection === 'down') {
                     activeIndex = (activeIndex + 1) % sections.length;
                     scrollDepth = -500;
                 }
