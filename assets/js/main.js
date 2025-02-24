@@ -79,3 +79,48 @@ window.addEventListener("wheel", (event) => {
 
     lastScrollDepth = scrollDepth;
 }, { passive: false });
+
+let touchStartY = 0;
+window.addEventListener("touchstart", (event) => {
+    touchStartY = event.touches[0].clientY;
+}, { passive: true });
+
+window.addEventListener("touchmove", (event) => {
+    event.preventDefault();
+    
+    const touchEndY = event.touches[0].clientY;
+    const deltaY = touchStartY - touchEndY;
+    scrollDepth += deltaY * 0.5;
+    scrollDepth = Math.min(Math.max(scrollDepth, -500), 100);
+
+    let scrollDirection = scrollDepth > lastScrollDepth ? 'down' : 'up';
+
+    sections.forEach((section, index) => {
+        if (index === activeIndex) {
+            let scaleValue = Math.min(2, 0.8 + (scrollDepth + 500) / 600 * 1.2);
+            let zOffset = -900 + scrollDepth;
+            
+            section.style.opacity = 1;
+            
+            if (scrollDepth >= 0) {
+                scaleValue = 2;
+                section.style.opacity = 1 - scrollDepth / 100;
+                if (scrollDepth >= 100 && scrollDirection === 'down') {
+                    activeIndex = (activeIndex + 1) % sections.length;
+                    scrollDepth = -500;
+                }
+            } else if (scrollDepth <= -450 && scrollDirection === 'up' && activeIndex > 0) {
+                activeIndex--;
+                scrollDepth = 100;
+            }
+            
+            section.style.transform = `translate(-50%, -50%) translateZ(${zOffset}px) scale(${scaleValue})`;
+        } else {
+            section.style.transform = 'translate(-50%, -50%) translateZ(-900px) scale(0.8)';
+            section.style.opacity = 0;
+        }
+    });
+
+    lastScrollDepth = scrollDepth;
+    touchStartY = touchEndY;
+}, { passive: false });
