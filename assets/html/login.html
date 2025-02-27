@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="../css/styles-login.css">
 </head>
 <body>
+    <div class="top-right">
+        <a href="../../main.html" class="btn volver-btn">Volver al Inicio</a>
+    </div>
     <div class="container">
         <h1>Iniciar Sesión</h1>
         <form id="loginForm">
@@ -18,25 +21,30 @@
             </div>
             <button type="submit" class="btn">Entra</button>
         </form>
+        <div class="register-container">
+            <p>¿No tienes cuenta?</p>
+            <a href="registro.html" class="btn register-btn">Regístrate</a>
+        </div>
     </div> 
+
     <script>
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-        
-            fetch('http://localhost:3000/login', {
+            const correo = document.getElementById('email').value;
+            const contraseña = document.getElementById('password').value;
+    
+            fetch('../php/login.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ username: email, password: password }),
+                body: JSON.stringify({ correo: correo, contraseña: contraseña }),
             })
             .then(response => response.json())
             .then(data => {
-                if (data.message) {
-                    alert('Inicio de sesión exitoso');
+                if (data.mensaje) {
+                    alert(data.mensaje);
                     window.location.href = '../../main.html';
                 } else {
                     alert('Error: ' + data.error);
@@ -47,8 +55,6 @@
                 alert('Error al intentar iniciar sesión');
             });
         });
-        </script>
-        
-           
+    </script> 
 </body>
 </html>

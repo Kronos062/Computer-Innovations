@@ -23,5 +23,36 @@
             </nav>
         </div>
     </header>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const loginBtn = document.querySelector(".login-btn");
+    
+            fetch('../php/login.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.logueado) {
+                        loginBtn.textContent = "Cerrar sesión";
+                        loginBtn.href = "#";
+                        loginBtn.addEventListener("click", cerrarSesion);
+                    }
+                });
+    
+            function cerrarSesion(e) {
+                e.preventDefault();
+    
+                fetch('../php/logout.php')
+                    .then(response => response.json())
+                    .then(data => {
+                        alert(data.mensaje);
+                        window.location.reload();
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Error al cerrar sesión');
+                    });
+            }
+        });
+    </script>
+    
 </body>
 </html>

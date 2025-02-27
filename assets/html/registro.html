@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C.I. - Registro</title>
+    <link rel="stylesheet" href="../css/styles-login.css">
+</head>
+<body>
+    <div class="top-right">
+        <a href="../../main.html" class="btn volver-btn">Volver al Inicio</a>
+    </div>
+    <div class="container">
+        <h1>Registro</h1>
+        <form id="registroForm">
+            <div class="box">
+                <input type="text" name="nombre" id="nombre" placeholder="Introduce tu nombre">
+            </div>
+            <div class="box">
+                <input type="email" name="correo" id="correo" placeholder="Introduce tu correo">
+            </div>
+            <div class="box">
+                <input type="password" name="contraseña" id="contraseña" placeholder="Introduce tu contraseña">
+            </div>
+            <button type="submit" class="btn">Registrarse</button>
+        </form>
+        <div class="register-container">
+            <p>¿Ya tienes cuenta?</p>
+            <a href="login.html" class="btn login-btn">Inicia Sesión</a>
+        </div>
+    </div> 
+
+    <script>
+        document.getElementById('registroForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const nombre = document.getElementById('nombre').value;
+            const correo = document.getElementById('correo').value;
+            const contraseña = document.getElementById('contraseña').value;
+    
+            fetch('../php/registro.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ nombre: nombre, correo: correo, contraseña: contraseña }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.mensaje) {
+                    alert(data.mensaje);
+                    window.location.href = 'login.html';
+                } else {
+                    alert('Error: ' + data.error);
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('Error al intentar registrarse');
+            });
+        });
+    </script> 
+</body>
+</html>
