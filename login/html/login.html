@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="top-right">
-        <a href="../../main.html" class="btn volver-btn">Volver al Inicio</a>
+        <a href="../../main/html/main.html" class="btn volver-btn">Volver al Inicio</a>
     </div>
     <div class="container">
         <h1>Iniciar Sesión</h1>
@@ -23,7 +23,7 @@
         </form>
         <div class="register-container">
             <p>¿No tienes cuenta?</p>
-            <a href="registro.html" class="btn register-btn">Regístrate</a>
+            <a href="../../registro/html/registro.html" class="btn register-btn">Regístrate</a>
         </div>
     </div> 
 
@@ -45,7 +45,7 @@
             .then(data => {
                 if (data.mensaje) {
                     alert(data.mensaje);
-                    window.location.href = '../../main.html';
+                    window.location.href = '../../main/html/main.html';
                 } else {
                     alert('Error: ' + data.error);
                 }

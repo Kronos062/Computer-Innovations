@@ -15,9 +15,9 @@
             <nav>
                 <div class="buttons-header">
                 <ul>
-                    <li><a class="main-btn" href="../../main.html">Pagina Principal</a></li>
-                    <li><a class="descargar-btn" href="descarga.html">Descargar</a></li>
-                    <li><a class="login-btn" href="login.html">Iniciar Sesión</a></li>
+                    <li><a class="main-btn" href="../../main/html/main.html">Pagina Principal</a></li>
+                    <li><a class="descargar-btn" href="../../descarga/html/descarga.html">Descargar</a></li>
+                    <li><a class="login-btn" href="../../login/html/login.html">Iniciar Sesión</a></li>
                 </ul>
                 </div>
             </nav>
@@ -27,7 +27,7 @@
         document.addEventListener("DOMContentLoaded", function() {
             const loginBtn = document.querySelector(".login-btn");
     
-            fetch('../php/login.php')
+            fetch('../../login/php/login.php')
                 .then(response => response.json())
                 .then(data => {
                     if (data.logueado) {
@@ -40,7 +40,7 @@
             function cerrarSesion(e) {
                 e.preventDefault();
     
-                fetch('../php/logout.php')
+                fetch('../../login/php/logout.php')
                     .then(response => response.json())
                     .then(data => {
                         alert(data.mensaje);
