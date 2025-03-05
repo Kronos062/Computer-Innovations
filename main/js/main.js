@@ -2,7 +2,12 @@ const sun = document.querySelector('.sun');
 const mountains = document.querySelectorAll('.mountain');
 const ground = document.querySelector('.ground');
 const sections = document.querySelectorAll(".section");
-
+document.querySelectorAll('.content-div, .content-div2, .content-div3, .content-div4, .content-div5')
+.forEach(div => {
+    div.addEventListener('click', (event) => {
+        event.stopPropagation();
+    });
+});
 const initialPositions = Array.from(mountains).map((mountain) => {
     const transform = getComputedStyle(mountain).transform;
     if (transform !== 'none') {

@@ -207,7 +207,7 @@ html, body {
   height: calc(var(--mountain-size) * 0.66);
   width: var(--mountain-size);
 
-  pointer-events: auto;
+  pointer-events: all;
   position: relative;
   z-index: 20;
 
@@ -294,18 +294,17 @@ html, body {
   justify-content: center;
   align-items: center;
   z-index: 10;
-  pointer-events: none;
 }
 
 .button {
+  font-size: 1rem;
   color: white;
   background-color: #03afaa;
-  height: 30px;
-  width: auto;
+  height: 40px;
+  width: 300px;
   border-radius: 10px;
   border: #000000;
   border-width: 1px;
-  pointer-events: all;
 }
 
 .section {
@@ -313,6 +312,7 @@ html, body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) translateZ(-500px) scale(0.5);
+  z-index: 20;
 }
 
 
@@ -358,21 +358,23 @@ html, body {
   transform: translateZ(-100px) scale(0.9);
 }
 
-.section h2 {
-  font-size: 3rem;
+.section h3 {
+  margin-top: 40px;
+  font-size: 2rem;
   text-transform: uppercase;
   text-align: center;
   color: #ff0080;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
   font-family: 'Orbitron', sans-serif;
 }
 
-.section h2 {
-  font-size: 3rem;
+.section h3 {
+  margin-top: 40px;
+  font-size: 2rem;
   text-transform: uppercase;
   text-align: center;
   color: #FFFFFF;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
   font-family: 'Orbitron', sans-serif;
 }
 
@@ -386,7 +388,7 @@ html, body {
 
 
 
-h2:hover {
+h3:hover {
   animation: neon-glow infinite alternate ease-in-out;
   animation-duration: 1.5s;
 }
