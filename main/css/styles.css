@@ -207,7 +207,7 @@ html, body {
   height: calc(var(--mountain-size) * 0.66);
   width: var(--mountain-size);
 
-  pointer-events: all;
+  pointer-events: auto;
   position: relative;
   z-index: 20;
 
@@ -294,6 +294,11 @@ html, body {
   justify-content: center;
   align-items: center;
   z-index: 10;
+  pointer-events: auto;
+}
+
+.container > *:not(.button):not(.mountain) {
+  pointer-events: none;
 }
 
 .button {
@@ -305,6 +310,21 @@ html, body {
   border-radius: 10px;
   border: #000000;
   border-width: 1px;
+  pointer-events: auto;
+}
+
+.button {
+  position: relative;
+  z-index: 1;
+  pointer-events: auto;
+}
+
+.button.top {
+  z-index: 2;
+}
+
+.button.clicked + .button {
+  pointer-events: none;
 }
 
 .section {
