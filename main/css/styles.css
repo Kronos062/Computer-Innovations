@@ -207,7 +207,7 @@ html, body {
   height: calc(var(--mountain-size) * 0.66);
   width: var(--mountain-size);
 
-  pointer-events: auto;
+  pointer-events: all;
   position: relative;
   z-index: 20;
 
@@ -294,7 +294,7 @@ html, body {
   justify-content: center;
   align-items: center;
   z-index: 10;
-  pointer-events: auto;
+  pointer-events: none;
 }
 
 .container > *:not(.button):not(.mountain) {
