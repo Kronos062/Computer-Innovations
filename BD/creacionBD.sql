@@ -2,8 +2,8 @@ create DATABASE IF NOT EXISTS CI_NA_Tickets;
 
 use CI_NA_Tickets;
 
-CREATE USER 'admin'@'localhost' IDENTIFIED BY 'admin.Armin1928';
-CREATE USER 'client'@'localhost' IDENTIFIED BY 'Dabu.ten10-10';
+CREATE USER 'admin'@'localhost' IDENTIFIED BY 'PerroSanxeDimision';
+CREATE USER 'client'@'localhost' IDENTIFIED BY '1234';
 
 GRANT ALL PRIVILEGES ON CI_NA_Tickets.Tickets TO 'admin'@'localhost';
 
