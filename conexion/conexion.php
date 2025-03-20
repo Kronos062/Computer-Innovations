@@ -1,12 +1,11 @@
 <?php
 $servidor = "localhost";
-$usuario = "root"; //tengo que poner aqui el usuario
-$clave = ""; //creo que no tiene contraseña el xamp de default
-$base_datos = "computer-innovations";//supongo se llamará así, sino ya lo cambio después
-
-$conexion = new mysqli($servidor, $usuario, $clave, $base_datos);
-
+$usuario_db = "admin";
+$password_db = "PerroSanxeDimision";
+$nombre_db = "CI_NA_Tickets";
+$conexion = new mysqli($servidor, $usuario_db, $password_db, $nombre_db);
 if ($conexion->connect_error) {
-    die("Error de conexión: " . $conexion->connect_error);
+    die(json_encode(["error" => "Conexión fallida: " . $conexion->connect_error]));
 }
+$conexion->set_charset("utf8");
 ?>

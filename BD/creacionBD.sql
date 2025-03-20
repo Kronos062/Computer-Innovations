@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS Usuarios (
     contrasena VARCHAR(255) NOT NULL,
     rol VARCHAR(100),
     PRIMARY KEY (id_usuario),
-    FOREIGN KEY (rol) REFERENCES Usuarios(id_usuario) ON DELETE CASCADE
+    FOREIGN KEY (rol) REFERENCES Rol(id_rol) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS Empleados (
@@ -55,19 +55,18 @@ CREATE TABLE IF NOT EXISTS Clientes (
     FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario) ON DELETE CASCADE
 );
 
-create table IF NOT EXISTS Tickets(
-    id_ticket INT AUTO_INCREMENT NOT NULL UNIQUE,
-    id_empleado INT NOT NULL,
+CREATE TABLE IF NOT EXISTS Tickets (
+    id_ticket INT AUTO_INCREMENT PRIMARY KEY,
+    id_empleado INT NULL,
     id_cliente INT NOT NULL,
     id_categoria INT NOT NULL,
-    asunto VARCHAR(200),
-    descripcion VARCHAR(5000),
+    asunto VARCHAR(200) NOT NULL,
+    descripcion VARCHAR(5000) NOT NULL,
     solucion VARCHAR(5000),
-    estado VARCHAR(25),
-    fechaEmision DATE,
-    fechaCierre DATE,
-    PRIMARY KEY (id_ticket),
-    FOREIGN KEY (id_empleado) REFERENCES Empleados(id_empleado),
-    FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente),
-    FOREIGN KEY (id_categoria) REFERENCES Categoria(id_categoria)
-    );
+    estado VARCHAR(25) NOT NULL DEFAULT 'Abierto',
+    fechaEmision DATE NOT NULL DEFAULT (CURRENT_DATE),
+    fechaCierre DATE NULL,
+    FOREIGN KEY (id_empleado) REFERENCES Empleados(id_empleado) ON DELETE SET NULL,
+    FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente) ON DELETE CASCADE,
+    FOREIGN KEY (id_categoria) REFERENCES Categoria(id_categoria) ON DELETE CASCADE
+);
