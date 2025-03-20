@@ -1,0 +1,8 @@
+Comentarios acerca de cómo interactuar con la base de datos a la hora de asignar los empleados a los tickets.
+
+Hacer consulta a la cantidad de tickets que hay ya creados y hacer un recuento de que empleados tienen cuantos tickets en la categoria pertinente al ticket, ej:(emp1(2), emp2(1), emp3(0))
+y según cuantas ápariciones tienen ordenarlos según sus apariciones y agarrar al que menos apariciones tenga y asignarle el ticket.
+
+Posible visualización de administrador para crear empleados y tener la posibilidad de manipular cosas manualmente.
+Esto nos da la oportunidad de crear una visualización a nivel de administrador/empleado para ver todos los tickets disponibles.
+Añadir que podriamos crear un tercer usuario de superadmin para poder visualizar todos los tickets y poder quitar/añadir/modificar manualmente todo, asi los empleado solo ven SUS tickets.

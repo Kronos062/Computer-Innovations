@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C.I. - Ticketing</title>
+    <link rel="stylesheet" href="../css/styles-tiketing.css">
+</head>
+<body>
+    <header id="main-header">
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="../img/svg-logo.svg" alt="Logo" class="logo">
+            </div>
+            <nav>
+                <div class="buttons-header">
+                <ul>
+                    <li><a class="main-btn" href="../../main/html/main.html">Pagina Principal</a></li>
+                    <li><a class="descargar-btn" href="../../descarga/html/descarga.html">Descargar</a></li>
+                    <li><a class="login-btn" href="../../login/html/login.html">Iniciar Sesión</a></li>
+                </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const loginBtn = document.querySelector(".login-btn");
+    
+            fetch('../../../login/php/login.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.logueado) {
+                        loginBtn.textContent = "Cerrar sesión";
+                        loginBtn.href = "#";
+                        loginBtn.addEventListener("click", cerrarSesion);
+                    }
+                });
+    
+            function cerrarSesion(e) {
+                e.preventDefault();
+    
+                fetch('../../login/php/logout.php')
+                    .then(response => response.json())
+                    .then(data => {
+                        alert(data.mensaje);
+                        window.location.reload();
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Error al cerrar sesión');
+                    });
+            }
+        });
+    </script>
+    
+</body>
+</html>

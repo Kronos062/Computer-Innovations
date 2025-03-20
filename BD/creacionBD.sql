@@ -13,12 +13,6 @@ create table IF NOT EXISTS Categoria(
     PRIMARY KEY (id_categoria)
 );
 
-create table IF NOT EXISTS Rol(
-    id_rol INT AUTO_INCREMENT NOT NULL UNIQUE,
-    rol VARCHAR(100)
-    PRIMARY KEY (id_rol)
-);
-
 create table IF NOT EXISTS Servicios(
     id_servicio INT AUTO_INCREMENT NOT NULL,
     detallesServicio VARCHAR(100),
@@ -34,9 +28,7 @@ CREATE TABLE IF NOT EXISTS Usuarios (
     nombreApellido VARCHAR(100),
     email VARCHAR(100) UNIQUE NOT NULL,
     contrasena VARCHAR(255) NOT NULL,
-    rol VARCHAR(100),
     PRIMARY KEY (id_usuario),
-    FOREIGN KEY (rol) REFERENCES Rol(id_rol) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS Empleados (
