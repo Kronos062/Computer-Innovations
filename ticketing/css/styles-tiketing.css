@@ -98,3 +98,70 @@ body {
        height: 40px;
    }
 }
+
+body {
+    background-color: #933283;
+    color: #c3d1d9;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.window {
+    background-color: #003545;
+    border: 2px solid #005b73;
+    width: 80%;
+    max-width: 900px;
+    margin: 20px;
+    padding: 15px;
+    box-shadow: 0 0 10px #002b3f;
+}
+.header {
+    background-color: #0099a4;
+    color: black;
+    text-align: center;
+    padding: 5px;
+    font-weight: bold;
+    position: relative;
+}
+.nav-bar {
+    background-color: #ff1e56;
+    color: #ffeebb;
+    padding: 5px;
+    text-align: center;
+}
+.nav-bar span {
+    margin: 0 10px;
+    cursor: pointer;
+}
+.content {
+    margin-top: 10px;
+    background-color: #002b3f;
+    padding: 15px;
+    border: 1px solid #005b73;
+}
+.product {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #004559;
+    border: 1px solid #005b73;
+    position: relative;
+}
+.add-to-cart {
+    background-color: #ffb347;
+    color: black;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    display: inline-block;
+}
+.footer {
+    background-color: #0099a4;
+    color: black;
+    text-align: center;
+    padding: 5px;
+    margin-top: 10px;
+}
