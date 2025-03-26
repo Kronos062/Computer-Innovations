@@ -20,7 +20,7 @@ create table IF NOT EXISTS Servicios(
     costoMes DECIMAL(8, 2),
     costoAnio DECIMAL(8, 2),
     PRIMARY KEY (id_servicio)
-    );
+);
 
 CREATE TABLE IF NOT EXISTS Usuarios (
     id_usuario INT AUTO_INCREMENT NOT NULL UNIQUE,

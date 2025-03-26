@@ -57,22 +57,6 @@ body {
     background-color: #ffd026;
 }
 
-.descargar-btn {
-    background-color: #dc005d;
-}
-
-.descargar-btn:hover {
-    background-color: #ec1a6d;
-}
-
-.login-btn {
-    background-color: #0beadc;
-}
-
-.login-btn:hover {
-    background-color: #1bfaec;
-}
-
 @media only screen and (max-width: 768px) {
     .header-container {
         flex-direction: column;
