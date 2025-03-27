@@ -29,15 +29,26 @@ body {
     text-transform: uppercase;
 }
 
+.nav-bar {
+    background-color: #ff1e56;
+    color: #ffeebb;
+    padding: 10px;
+    text-align: center;
+}
+
 .nav-bar a {
     color: #ffeebb;
     text-decoration: none;
-    margin: 0 10px;
+    margin: 0 15px;
+    font-weight: bold;
+    font-size: 18px;
+    display: inline-block;
 }
 
 .nav-bar a:hover {
     text-decoration: underline;
 }
+
 
 .nav-bar span {
     margin: 0 10px;
