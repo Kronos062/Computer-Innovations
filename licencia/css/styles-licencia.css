@@ -129,3 +129,33 @@ body {
     text-decoration: none;
     cursor: pointer;
   }
+  .comprar-btn{
+    background-color: #ff9900;
+    color: black;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    display: inline-block;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0 0 8px #ff9900;
+  }
+  .num-cantidad {
+    background: none !important;
+    border: none;
+    font-size: 25px;
+    color: #ff00ff;
+
+  }
+  .num-cantidad:hover {
+    background: none !important;
+    border: none;
+    font-size: 25px;
+    color: #ff0099;
+
+  }
+  .num {
+    font-size: 25px;
+    color: #ff00ff;
+  }

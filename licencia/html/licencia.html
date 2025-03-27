@@ -40,28 +40,56 @@
     <div id="modal1" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('modal1');">&times;</span>
-            <p>Supuesta compra de licencias de empresa</p>
+            <p>Selecciona la cantidad de Licencias Para Organización que deseas adquirir</p>
+            <div class="selector-cantidad">
+                <button class="num-cantidad" onclick="actualizarCantidad('modal1', -1)">-</button>
+                <span class="num" id="cantidad1">1</span>
+                <button class="num-cantidad" onclick="actualizarCantidad('modal1', 1)">+</button>
+            </div>
+            <button class="comprar-btn" onclick="comprar('modal1')">Adquirir</button>
         </div>
     </div>
-
+    
     <div id="modal2" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('modal2');">&times;</span>
-            <p>Supuesta compra de licencias de usuario</p>
+            <p>Selecciona la cantidad de Licencias Para Usuario que deseas adquirir</p>
+            <div class="selector-cantidad">
+                <button class="num-cantidad" onclick="actualizarCantidad('modal2', -1)">-</button>
+                <span class="num" id="cantidad2">1</span>
+                <button class="num-cantidad" onclick="actualizarCantidad('modal2', 1)">+</button>
+            </div>
+            <button class="comprar-btn" onclick="comprar('modal2')">Adquirir</button>
         </div>
     </div>
-
+    
     <script>
         function showModal(modalId) {
             var modal = document.getElementById(modalId);
             modal.style.display = "block";
         }
-
+    
         function closeModal(modalId) {
             var modal = document.getElementById(modalId);
             modal.style.display = "none";
         }
-
+    
+        function actualizarCantidad(modalId, change) {
+            var cantidadElement = document.getElementById('cantidad' + (modalId === 'modal1' ? '1' : '2'));
+            var currentcantidad = parseInt(cantidadElement.innerText);
+            var newcantidad = currentcantidad + change;
+            
+            if (newcantidad >= 1) {
+                cantidadElement.innerText = newcantidad;
+            }
+        }
+    
+        function comprar(modalId) {
+            var cantidad = document.getElementById('cantidad' + (modalId === 'modal1' ? '1' : '2')).innerText;
+            alert('Has adquirido ' + cantidad + ' licencias para ' + (modalId === 'modal1' ? 'Organización' : 'Usuario') + '.');
+            closeModal(modalId); 
+        }
+    
         window.onclick = function(event) {
             var modals = document.getElementsByClassName("modal");
             for (var i = 0; i < modals.length; i++) {
