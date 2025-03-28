@@ -1,100 +1,139 @@
 body {
+    background-color: #1a001f !important;
+    color: #ff00ff !important;
+    font-family: 'Courier New', Courier, monospace;
     margin: 0;
     padding: 0;
-}
-
-#main-header {
-    background-color: #933283;
-    color: white;
-}
-
-.header-container {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
 }
 
-.logo-container {
-    flex: 0 0 auto;
+.window {
+    background-color: #220033;
+    border: 2px solid #ff00ff;
+    width: 80%;
+    max-width: 900px;
+    margin: 20px;
+    padding: 15px;
+    box-shadow: 0 0 15px #ff00ff;
 }
 
-.logo {
-    height: 60px;
-    width: auto;
-    margin-left: 10px;
-}
-
-.buttons-header {
-    flex: 1;
-}
-
-.buttons-header ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: flex-start;
-}
-
-.buttons-header ul li a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
+.header {
+    background-color: #ff0099;
+    color: #1a001f;
     text-align: center;
-    width: 170px;
-    height: 69px;
-    transition: background-color 0.2s ease;
+    padding: 5px;
+    font-weight: bold;
+    position: relative;
+    text-transform: uppercase;
 }
 
-.main-btn {
-    background-color: #eebb16;
+.nav-bar {
+    background-color: #ff1e56;
+    color: #ffeebb;
+    padding: 10px;
+    text-align: center;
 }
 
-.main-btn:hover {
-    background-color: #ffd026;
+.nav-bar a {
+    color: #ffeebb;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    font-size: 18px;
+    display: inline-block;
 }
 
-@media only screen and (max-width: 768px) {
-    .header-container {
-        flex-direction: column;
-        align-items: center;
-        padding-bottom: 10px;
-    }
-
-    .buttons-header ul {
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-    }
-
-    .buttons-header ul li {
-        margin-right: 0;
-    }
-
-    .buttons-header ul li a {
-        width: 200px;
-        height: 40px;
-        line-height: 40px;
-        font-size: 14px;
-    }
-
-    .logo-container {
-        margin-bottom: 10px;
-    }
+.nav-bar a:hover {
+    text-decoration: underline;
 }
 
-@media only screen and (max-width: 480px) {
-   .buttons-header ul li a {
-       width: 150px;
-       height: 35px;
-       line-height: 35px;
-       font-size: 12px;
-   }
+.content {
+    margin-top: 10px;
+    background-color: #330044;
+    padding: 15px;
+    border: 1px solid #ff00ff;
+    box-shadow: 0 0 10px #ff00ff;
+}
 
-   .logo {
-       height: 40px;
-   }
+.carousel-item {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex: 0 0 auto !important;
+    width: 100% !important;
+}
+
+.card {
+    background-color: #440055 !important;
+    border: 1px solid #ff00ff !important;
+    position: relative;
+    box-shadow: 0 0 8px #ff00ff !important;
+    width: 100%;
+    max-width: 400px;
+    margin: 20px 0;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.card-title {
+    color: #ff00ff !important;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.card-text {
+    color: #ffeebb;
+    margin-bottom: 20px;
+}
+
+.add-to-cart {
+    background-color: #ff9900;
+    color: black;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    display: inline-block;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0 0 8px #ff9900;
+}
+
+.add-to-cart:hover {
+    background-color: #ffcc00;
+    box-shadow: 0 0 12px #ffcc00;
+}
+
+.footer {
+    background-color: #ff0099;
+    color: #1a001f;
+    text-align: center;
+    padding: 5px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: #ff00ff;
+}
+
+.carousel-control-prev, .carousel-control-next {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    width: 30px;
+    height: 30px;
+    background-color: #ff00ff;
+}
+
+.carousel-inner {
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100%; 
 }
