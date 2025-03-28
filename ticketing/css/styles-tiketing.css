@@ -1,107 +1,6 @@
 body {
-    margin: 0;
-    padding: 0;
-}
-
-#main-header {
-    background-color: #933283;
-    color: white;
-}
-
-.header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo-container {
-    flex: 0 0 auto;
-}
-
-.logo {
-    height: 60px;
-    width: auto;
-    margin-left: 10px;
-}
-
-.buttons-header {
-    flex: 1;
-}
-
-.buttons-header ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: flex-start;
-}
-
-.buttons-header ul li a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    text-align: center;
-    width: 170px;
-    height: 69px;
-    transition: background-color 0.2s ease;
-}
-
-.main-btn {
-    background-color: #eebb16;
-}
-
-.main-btn:hover {
-    background-color: #ffd026;
-}
-
-@media only screen and (max-width: 768px) {
-    .header-container {
-        flex-direction: column;
-        align-items: center;
-        padding-bottom: 10px;
-    }
-
-    .buttons-header ul {
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-    }
-
-    .buttons-header ul li {
-        margin-right: 0;
-    }
-
-    .buttons-header ul li a {
-        width: 200px;
-        height: 40px;
-        line-height: 40px;
-        font-size: 14px;
-    }
-
-    .logo-container {
-        margin-bottom: 10px;
-    }
-}
-
-@media only screen and (max-width: 480px) {
-   .buttons-header ul li a {
-       width: 150px;
-       height: 35px;
-       line-height: 35px;
-       font-size: 12px;
-   }
-
-   .logo {
-       height: 40px;
-   }
-}
-
-body {
-    background-color: #933283;
-    color: #c3d1d9;
+    background-color: #1a001f;
+    color: #ff00ff;
     font-family: 'Courier New', Courier, monospace;
     margin: 0;
     padding: 0;
@@ -109,59 +8,112 @@ body {
     flex-direction: column;
     align-items: center;
 }
+
 .window {
-    background-color: #003545;
-    border: 2px solid #005b73;
+    background-color: #220033;
+    border: 2px solid #ff00ff;
     width: 80%;
     max-width: 900px;
     margin: 20px;
     padding: 15px;
-    box-shadow: 0 0 10px #002b3f;
+    box-shadow: 0 0 15px #ff00ff;
 }
+
 .header {
-    background-color: #0099a4;
-    color: black;
+    background-color: #ff0099;
+    color: #1a001f;
     text-align: center;
     padding: 5px;
     font-weight: bold;
     position: relative;
+    text-transform: uppercase;
 }
+
 .nav-bar {
     background-color: #ff1e56;
     color: #ffeebb;
-    padding: 5px;
+    padding: 10px;
     text-align: center;
 }
-.nav-bar span {
-    margin: 0 10px;
-    cursor: pointer;
-}
-.content {
-    margin-top: 10px;
-    background-color: #002b3f;
-    padding: 15px;
-    border: 1px solid #005b73;
-}
-.product {
-    margin-bottom: 20px;
-    padding: 10px;
-    background-color: #004559;
-    border: 1px solid #005b73;
-    position: relative;
-}
-.add-to-cart {
-    background-color: #ffb347;
-    color: black;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    margin-top: 10px;
+
+.nav-bar a {
+    color: #ffeebb;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    font-size: 18px;
     display: inline-block;
 }
-.footer {
-    background-color: #0099a4;
+
+.nav-bar a:hover {
+    text-decoration: underline;
+}
+
+.content {
+    margin-top: 10px;
+    background-color: #330044;
+    padding: 15px;
+    border: 1px solid #ff00ff;
+    box-shadow: 0 0 10px #ff00ff;
+}
+
+h2 {
+    color: #ffeebb;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    color: #ffeebb;
+    font-size: 14px;
+    margin: 10px 0;
+}
+
+input, textarea {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ff00ff;
+    background-color: #330044;
+    color: #ffeebb;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+input:focus, textarea:focus {
+    border-color: #ff9900;
+    outline: none;
+    box-shadow: 0 0 5px #ff9900;
+}
+
+.submit-btn {
+    background-color: #ff9900;
     color: black;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    text-transform: uppercase;
+    box-shadow: 0 0 8px #ff9900;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #ff7f00;
+    box-shadow: 0 0 12px #ff7f00;
+}
+
+.footer {
+    background-color: #ff0099;
+    color: #1a001f;
     text-align: center;
     padding: 5px;
     margin-top: 10px;
+    font-weight: bold;
 }
