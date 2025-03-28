@@ -7,20 +7,34 @@
     <link rel="stylesheet" href="../css/styles-tiketing.css">
 </head>
 <body>
-    <header id="main-header">
-        <div class="header-container">
-            <div class="logo-container">
-                <img src="../img/svg-logo.svg" alt="Logo" class="logo">
-            </div>
-            <nav>
-                <div class="buttons-header">
-                <ul>
-                    <li><a class="main-btn" href="../../main/html/main.html">Pagina Principal</a></li>
-                </ul>
-                </div>
-            </nav>
+    <div class="window">
+        <div class="header">
+            Neo Archi - Sistema de Ticketing
         </div>
-    </header>
+        <div class="nav-bar">
+            <a href="../../main/html/main.html">Inicio</a> |
+            <a href="../../login/html/login.html">Login</a> |
+            <a href="../../descarga/html/descarga.html">Descargas</a>
+        </div>
+        <div class="content">
+            <h2>Formulario de Incidencia</h2>
+            <form action="#" method="post">
+                <label for="incidencia">Incidencia:</label>
+                <textarea id="incidencia" name="incidencia" rows="4" placeholder="Describe tu incidencia..." required></textarea>
+
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+
+                <label for="correo">Correo:</label>
+                <input type="email" id="correo" name="correo" placeholder="Tu correo electrónico" required>
+
+                <button type="submit" class="submit-btn">Enviar</button>
+            </form>
+        </div>
+        <div class="footer">
+            Neo Archi - Computer Innovations &copy; 2025
+        </div>
+    </div>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const loginBtn = document.querySelector(".login-btn");
