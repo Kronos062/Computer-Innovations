@@ -19,7 +19,7 @@
         padding: 15px;
         box-shadow: 0 0 15px #ff00ff;
     }
-
+[data-bs-theme=dark]
     .header {
         background-color: #ff0099;
         color: #1a001f;
@@ -30,7 +30,7 @@
         box-shadow: 0 0 8px #ff0099;
         text-transform: uppercase;
     }
-
+[data-bs-theme=dark]
     .nav-bar {
         background-color: #ff1e56;
         color: #ffeebb;
@@ -38,7 +38,7 @@
         box-shadow: 0 0 8px #ff1e56;
         text-align: center;
     }
-
+[data-bs-theme=dark]
     .nav-bar a {
         color: #ffeebb;
         text-decoration: none;
@@ -47,16 +47,16 @@
         font-size: 18px;
         display: inline-block;
     }
-
+[data-bs-theme=dark]
     .nav-bar a:hover {
         text-decoration: underline;
     }
-
+[data-bs-theme=dark]
     .nav-bar span {
         margin: 0 10px;
         cursor: pointer;
     }
-
+[data-bs-theme=dark]
     .content {
         margin-top: 10px;
         background-color: #330044;
@@ -64,24 +64,24 @@
         border: 1px solid #ff00ff;
         box-shadow: 0 0 10px #ff00ff;
     }
-
+[data-bs-theme=dark]
     .login-form {
         display: flex;
         flex-direction: column;
         gap: 15px;
     }
-
+[data-bs-theme=dark]
     .login-form label {
         margin-bottom: 5px;
     }
-
+[data-bs-theme=dark]
     .login-form input {
         padding: 5px;
         border: 1px solid #ff00ff;
         background-color: #440055;
         color: #ff00ff;
     }
-
+[data-bs-theme=dark]
     .submit-btn {
         background-color: #ff9900;
         color: black;
@@ -94,7 +94,7 @@
         text-align: center;
         font-size: 15px;
     }
-
+[data-bs-theme=dark]
     .registro-btn {
         background-color: #ff9900;
         color: black;
@@ -107,7 +107,7 @@
         text-align: center;
         font-size: 15px;
     }
-
+[data-bs-theme=dark]
     .footer {
         background-color: #ff0099;
         color: #1a001f;
@@ -116,21 +116,24 @@
         box-shadow: 0 0 8px #ff0099;
         margin-top: 10px;
     }
-
+[data-bs-theme=dark]
     .register-form {
         display: flex;
         flex-direction: column;
         gap: 15px;
     }
+[data-bs-theme=dark]
     .register-form label {
         margin-bottom: 5px;
     }
+[data-bs-theme=dark]
     .register-form input {
         padding: 5px;
         border: 1px solid #ff00ff;
         background-color: #440055;
         color: #ff00ff;
     }
+[data-bs-theme=dark]
     .login-btn {
         background-color: #ff9900;
         color: black;
@@ -143,6 +146,19 @@
         text-align: center;
         text-decoration: none;
         font-size: 15px;
+    }
+    .btn-dark{
+        background-color: #ff9900;
+        color: black;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        margin-top: 2px;
+        display: inline-block;
+        box-shadow: 0 0 8px #ff9900;
+        text-align: center;
+        text-decoration: none;
+        font-size: 15px; 
     }
 
 
@@ -167,7 +183,7 @@
         padding: 15px;
         box-shadow: 0 0 15px #ff00ff;
     }
-
+    [data-bs-theme=light]
     .header {
         background-color: #ff0099;
         color: #ffffff;
@@ -178,7 +194,7 @@
         box-shadow: 0 0 8px #ff0099;
         text-transform: uppercase;
     }
-
+    [data-bs-theme=light]
     .nav-bar {
         background-color: #ff1e56;
         color: #000000;
@@ -186,7 +202,7 @@
         box-shadow: 0 0 8px #ff1e56;
         text-align: center;
     }
-
+    [data-bs-theme=light]
     .nav-bar a {
         color: #000000;
         text-decoration: none;
@@ -195,16 +211,16 @@
         font-size: 18px;
         display: inline-block;
     }
-
+    [data-bs-theme=light]
     .nav-bar a:hover {
         text-decoration: underline;
     }
-
+    [data-bs-theme=light]
     .nav-bar span {
         margin: 0 10px;
         cursor: pointer;
     }
-
+    [data-bs-theme=light]
     .content {
         margin-top: 10px;
         background-color: #ffffff;
@@ -212,24 +228,24 @@
         border: 1px solid #ff00ff;
         box-shadow: 0 0 10px #ff00ff;
     }
-
+    [data-bs-theme=light]
     .login-form {
         display: flex;
         flex-direction: column;
         gap: 15px;
     }
-
+    [data-bs-theme=light]
     .login-form label {
         margin-bottom: 5px;
     }
-
+    [data-bs-theme=light]
     .login-form input {
         padding: 5px;
         border: 1px solid #ff00ff;
         background-color: #440055;
         color: #ff00ff;
     }
-
+    [data-bs-theme=light]
     .submit-btn {
         background-color: #ff9900;
         color: white;
@@ -242,7 +258,7 @@
         text-align: center;
         font-size: 15px;
     }
-
+    [data-bs-theme=light]
     .registro-btn {
         background-color: #ff9900;
         color: white;
@@ -255,7 +271,7 @@
         text-align: center;
         font-size: 15px;
     }
-
+    [data-bs-theme=light]
     .footer {
         background-color: #ff0099;
         color: #ffffff;
@@ -264,22 +280,38 @@
         box-shadow: 0 0 8px #ff0099;
         margin-top: 10px;
     }
-
+    [data-bs-theme=light]
     .register-form {
         display: flex;
         flex-direction: column;
         gap: 15px;
     }
+    [data-bs-theme=light]
     .register-form label {
         margin-bottom: 5px;
     }
+    [data-bs-theme=light]
     .register-form input {
         padding: 5px;
         border: 1px solid #ff00ff;
         background-color: #440055;
         color: #ff00ff;
     }
+    [data-bs-theme=light]
     .login-btn {
+        background-color: #ff9900;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        margin-top: 2px;
+        display: inline-block;
+        box-shadow: 0 0 8px #ff9900;
+        text-align: center;
+        text-decoration: none;
+        font-size: 15px;
+    }
+    .btn-dark{
         background-color: #ff9900;
         color: white;
         border: none;
