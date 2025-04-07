@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>C.I. - Registro</title>
     <link rel="stylesheet" href="../../login/css/styles-login.css">
 </head>
-<body>
+<body class="body">
     <div class="window">
         <div class="header">
             Registro
@@ -18,7 +18,7 @@
         </div>
         <div class="content">
             <h2>Regístrate</h2>
-            <form class="register-form">
+            <form class="register-form" id="registroForm">
                 <label for="username">Nombre:</label>
                 <input type="text" id="username" name="username" required>
 
@@ -33,20 +33,24 @@
 
                 <button type="submit" class="submit-btn">Registrarse</button>
             </form>
-          <div class="register-container">
-            <p>¿Ya tienes cuenta?</p>
-            <a href="../../login/html/login.html" class="btn login-btn">Inicia Sesión</a>
+            <div class="register-container">
+                <p>¿Ya tienes cuenta?</p>
+                <a href="../../login/html/login.html" class="btn login-btn">Inicia Sesión</a>
+                <div class="col-auto">
+                    <button class="btn btn-dark shadow" id="btnSwitch">Toggle Mode</button>
+                </div>
+            </div>
         </div>
-        </div>
-                <div class="footer">Neo Archi - Computer Innovations &copy; 2025</div>
-</body>
+        <div class="footer">Neo Archi - Computer Innovations &copy; 2025</div>
+    </div>
+
     <script>
         document.getElementById('registroForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const nombre = document.getElementById('nombre').value;
-            const correo = document.getElementById('correo').value;
-            const contraseña = document.getElementById('contraseña').value;
+            const nombre = document.getElementById('username').value;
+            const correo = document.getElementById('email').value;
+            const contraseña = document.getElementById('password').value;
     
             fetch('../php/register.php', {
                 method: 'POST',
@@ -69,6 +73,15 @@
                 alert('Error al intentar registrarse');
             });
         });
-    </script> 
+
+        document.getElementById('btnSwitch').addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-bs-theme');
+            if (currentTheme === 'dark') {
+                document.documentElement.setAttribute('data-bs-theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-bs-theme', 'dark');
+            }
+        });
+    </script>
 </body>
 </html>
