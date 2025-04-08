@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,6 +28,9 @@
                 <button type="button" class="registro-btn" onclick="window.location.href='../../registro/html/registro.html'">Regístrate</button>
                 <button type="submit" class="submit-btn">Login</button>
             </form>
+            <div class="col-auto">
+                    <button class="btn btn-dark" id="btnSwitch">Cambia er colo</button>
+            </div>
         </div>
         <div class="footer">Neo Archi - Computer Innovations &copy; 2025</div>
     </div>
@@ -58,6 +61,14 @@
                 console.error('Error:', error);
                 alert('Error al intentar iniciar sesión');
             });
+        });
+                document.getElementById('btnSwitch').addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-bs-theme');
+            if (currentTheme === 'dark') {
+                document.documentElement.setAttribute('data-bs-theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-bs-theme', 'dark');
+            }
         });
     </script> 
 </body>
