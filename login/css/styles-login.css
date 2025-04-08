@@ -147,6 +147,7 @@
         text-decoration: none;
         font-size: 15px;
     }
+[data-bs-theme=dark]
     .btn-dark{
         background-color: #ff9900;
         color: black;
@@ -311,6 +312,7 @@
         text-decoration: none;
         font-size: 15px;
     }
+    [data-bs-theme=light]
     .btn-dark{
         background-color: #ff9900;
         color: white;
