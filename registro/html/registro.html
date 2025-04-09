@@ -5,8 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>C.I. - Registro</title>
     <link rel="stylesheet" href="../../login/css/styles-login.css">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
 </head>
 <body class="body">
+    <div class="controles">
+		<button id="btnSwitch" class="btnSwitch"><ion-icon name="moon" class="dark-mode-button moon"></ion-icon></button>
+    </div>
     <div class="window">
         <div class="header">
             Registro
@@ -36,9 +42,6 @@
             <div class="register-container">
                 <p>¿Ya tienes cuenta?</p>
                 <a href="../../login/html/login.html" class="btn login-btn">Inicia Sesión</a>
-                <div class="col-auto">
-                    <button class="btn btn-dark" id="btnSwitch">Cambia er colo</button>
-                </div>
             </div>
         </div>
         <div class="footer">Neo Archi - Computer Innovations &copy; 2025</div>
@@ -76,10 +79,14 @@
 
         document.getElementById('btnSwitch').addEventListener('click', () => {
             const currentTheme = document.documentElement.getAttribute('data-bs-theme');
-            if (currentTheme === 'dark') {
-                document.documentElement.setAttribute('data-bs-theme', 'light');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-bs-theme', newTheme);
+
+            const icon = document.querySelector('#btnSwitch ion-icon');
+            if (newTheme === 'dark') {
+                icon.setAttribute('name', 'moon');
             } else {
-                document.documentElement.setAttribute('data-bs-theme', 'dark');
+                icon.setAttribute('name', 'sunny');
             }
         });
     </script>

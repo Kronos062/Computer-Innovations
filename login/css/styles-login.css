@@ -313,3 +313,21 @@
     margin-top: 15px;
     border-radius: 0 0 6px 6px;
 }
+
+.moon {
+	font-size: 28px;
+	color: #fbc02d;
+}
+.controles {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.btnSwitch {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
