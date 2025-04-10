@@ -182,9 +182,9 @@
 
 
 [data-bs-theme=light]
-.body {
+body {
     background-color: #ffffff;
-    color: #ff00ff;
+    color: black;
     font-family: 'Courier New', Courier, monospace;
     margin: 0;
     padding: 0;
@@ -288,11 +288,9 @@
 [data-bs-theme=light] .btn-dark {
     background-color: #d4d0c8;
     color: #000000;
-    border: 1px solid #808080;
     padding: 6px 12px;
     cursor: pointer;
     font-size: 14px;
-    border-radius: 4px;
     transition: background-color 0.2s ease;
 }
 

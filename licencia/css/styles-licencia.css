@@ -1,3 +1,4 @@
+[data-bs-theme=dark]
 body {
     background-color: #1a001f;
     color: #ff00ff;
@@ -8,7 +9,7 @@ body {
     flex-direction: column;
     align-items: center;
 }
-
+[data-bs-theme=dark]
 .window {
     background-color: #220033;
     border: 2px solid #ff00ff;
@@ -18,7 +19,7 @@ body {
     padding: 15px;
     box-shadow: 0 0 15px #ff00ff;
 }
-
+[data-bs-theme=dark]
 .header {
     background-color: #ff0099;
     color: #1a001f;
@@ -28,14 +29,14 @@ body {
     position: relative;
     text-transform: uppercase;
 }
-
+[data-bs-theme=dark]
 .nav-bar {
     background-color: #ff1e56;
     color: #ffeebb;
     padding: 10px;
     text-align: center;
 }
-
+[data-bs-theme=dark]
 .nav-bar a {
     color: #ffeebb;
     text-decoration: none;
@@ -44,17 +45,17 @@ body {
     font-size: 18px;
     display: inline-block;
 }
-
+[data-bs-theme=dark]
 .nav-bar a:hover {
     text-decoration: underline;
 }
 
-
+[data-bs-theme=dark]
 .nav-bar span {
     margin: 0 10px;
     cursor: pointer;
 }
-
+[data-bs-theme=dark]
 .content {
     margin-top: 10px;
     background-color: #330044;
@@ -62,7 +63,7 @@ body {
     border: 1px solid #ff00ff;
     box-shadow: 0 0 10px #ff00ff;
 }
-
+[data-bs-theme=dark]
 .product {
     margin-bottom: 20px;
     padding: 10px;
@@ -71,7 +72,7 @@ body {
     position: relative;
     box-shadow: 0 0 8px #ff00ff;
 }
-
+[data-bs-theme=dark]
 .add-to-cart {
     background-color: #ff9900;
     color: black;
@@ -84,7 +85,7 @@ body {
     text-transform: uppercase;
     box-shadow: 0 0 8px #ff9900;
 }
-
+[data-bs-theme=dark]
 .footer {
     background-color: #ff0099;
     color: #1a001f;
@@ -93,7 +94,7 @@ body {
     margin-top: 10px;
     font-weight: bold;
 }
-
+[data-bs-theme=dark]
 .modal {
     display: none;
     position: fixed;
@@ -106,8 +107,8 @@ body {
     background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4);
   }
-  
-  /* Modal Content/Box */
+  [data-bs-theme=dark]
+
   .modal-content {
     background-color: #440055;
     margin: 15% auto;
@@ -115,20 +116,21 @@ body {
     border: 1px solid #ff00ff;
     width: 40%; 
   }
-  
+  [data-bs-theme=dark]
   .close {
     color: #ff0099;
     float: right;
     font-size: 28px;
     font-weight: bold;
   }
-  
+  [data-bs-theme=dark]
   .close:hover,
   .close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
   }
+  [data-bs-theme=dark]
   .comprar-btn{
     background-color: #ff9900;
     color: black;
@@ -141,6 +143,7 @@ body {
     text-transform: uppercase;
     box-shadow: 0 0 8px #ff9900;
   }
+  [data-bs-theme=dark]
   .num-cantidad {
     background: none !important;
     border: none;
@@ -148,6 +151,7 @@ body {
     color: #ff00ff;
 
   }
+  [data-bs-theme=dark]
   .num-cantidad:hover {
     background: none !important;
     border: none;
@@ -155,7 +159,190 @@ body {
     color: #ff0099;
 
   }
+  [data-bs-theme=dark]
   .num {
     font-size: 25px;
     color: #ff00ff;
   }
+
+  [data-bs-theme=light]
+body {
+    background-color: #ffffff;
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+[data-bs-theme=light]
+.window {
+    background-color: #ffffff;
+    border: 2px solid #a0a0a0;
+    width: 80%;
+    max-width: 900px;
+    margin: 20px;
+    padding: 15px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.15);
+    border-radius: 6px;
+}
+[data-bs-theme=light]
+.header {
+  background-color: #316ac5;
+  color: #ffffff;
+  text-align: center;
+  padding: 8px;
+  font-weight: bold;
+  text-transform: none;
+  border-radius: 4px 4px 0 0;
+}
+[data-bs-theme=light]
+.nav-bar {
+  background-color: #d4d0c8;
+  color: #000000;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #a0a0a0;
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+}
+[data-bs-theme=light]
+.nav-bar a {
+  color: #000080;
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: 16px;
+}
+[data-bs-theme=light]
+.nav-bar a:hover {
+    text-decoration: underline;
+}
+
+[data-bs-theme=light]
+.nav-bar span {
+    margin: 0 10px;
+    cursor: pointer;
+}
+[data-bs-theme=light]
+.content {
+  margin-top: 10px;
+  background-color: #ffffff;
+  padding: 15px;
+  border: 1px solid #c0c0c0;
+  border-radius: 4px;
+}
+[data-bs-theme=light]
+.product {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #d4d0c8;
+    position: relative;
+}
+[data-bs-theme=light]
+.add-to-cart {
+    background-color: #d4d0c8;
+    color: black;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    display: inline-block;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+[data-bs-theme=light]
+.footer {
+  background-color: #d4d0c8;
+  color: #000000;
+  text-align: center;
+  padding: 6px;
+  font-size: 13px;
+  border-top: 1px solid #a0a0a0;
+  margin-top: 15px;
+  border-radius: 0 0 6px 6px;
+}
+[data-bs-theme=light]
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+  }
+  [data-bs-theme=light]
+
+  .modal-content {
+    background-color: #a0a0a0;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #a0a0a0;
+    width: 40%; 
+  }
+  [data-bs-theme=light]
+  .close {
+    color: black;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  [data-bs-theme=light]
+  .close:hover,
+  .close:focus {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  [data-bs-theme=light]
+  .comprar-btn{
+    background-color: #d4d0c8;
+    color: #000000;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+  }
+  .comprar-btn:hover{
+    background-color: #c0c0c0;
+  }
+  [data-bs-theme=light]
+  .num-cantidad {
+    background-color: #d4d0c8;
+    color: #000000;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+  }
+  [data-bs-theme=light]
+  .num-cantidad:hover {
+    background-color: #c0c0c0;
+  }
+  [data-bs-theme=light]
+  .num {
+    font-size: 25px;
+    color: black;
+  }
+
+  .moon {
+    font-size: 28px;
+    color: #fbc02d;
+  }
+  .controles {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      align-items: center;
+  }
+  
+  .btnSwitch {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+  }
+  

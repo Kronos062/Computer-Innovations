@@ -1,3 +1,4 @@
+[data-bs-theme=dark]
 body {
     background-color: #1a001f !important;
     color: #ff00ff !important;
@@ -8,7 +9,7 @@ body {
     flex-direction: column;
     align-items: center;
 }
-
+[data-bs-theme=dark]
 .window {
     background-color: #220033;
     border: 2px solid #ff00ff;
@@ -18,7 +19,7 @@ body {
     padding: 15px;
     box-shadow: 0 0 15px #ff00ff;
 }
-
+[data-bs-theme=dark]
 .header {
     background-color: #ff0099;
     color: #1a001f;
@@ -28,14 +29,14 @@ body {
     position: relative;
     text-transform: uppercase;
 }
-
+[data-bs-theme=dark]
 .nav-bar {
     background-color: #ff1e56;
     color: #ffeebb;
     padding: 10px;
     text-align: center;
 }
-
+[data-bs-theme=dark]
 .nav-bar a {
     color: #ffeebb;
     text-decoration: none;
@@ -44,11 +45,11 @@ body {
     font-size: 18px;
     display: inline-block;
 }
-
+[data-bs-theme=dark]
 .nav-bar a:hover {
     text-decoration: underline;
 }
-
+[data-bs-theme=dark]
 .content {
     margin-top: 10px;
     background-color: #330044;
@@ -56,14 +57,14 @@ body {
     border: 1px solid #ff00ff;
     box-shadow: 0 0 10px #ff00ff;
 }
-
+[data-bs-theme=dark]
 .carousel-item {
     justify-content: center !important;
     align-items: center !important;
     flex: 0 0 auto !important;
     width: 100% !important;
 }
-
+[data-bs-theme=dark]
 .card {
     background-color: #440055 !important;
     border: 1px solid #ff00ff !important;
@@ -76,19 +77,19 @@ body {
     padding: 20px;
     border-radius: 10px;
 }
-
+[data-bs-theme=dark]
 .card-title {
     color: #ff00ff !important;
     font-size: 1.5em;
     font-weight: bold;
     margin-bottom: 15px;
 }
-
+[data-bs-theme=dark]
 .card-text {
     color: #ffeebb;
     margin-bottom: 20px;
 }
-
+[data-bs-theme=dark]
 .add-to-cart {
     background-color: #ff9900;
     color: black;
@@ -100,13 +101,27 @@ body {
     font-weight: bold;
     text-transform: uppercase;
     box-shadow: 0 0 8px #ff9900;
+    --bs-btn-color: #000;
+    --bs-btn-bg: #ffc107;
+    --bs-btn-border-color: #ffc107;
+    --bs-btn-hover-color: #000;
+    --bs-btn-hover-bg: #ffca2c;
+    --bs-btn-hover-border-color: #ffc720;
+    --bs-btn-focus-shadow-rgb: 217,164,6;
+    --bs-btn-active-color: #000;
+    --bs-btn-active-bg: #ffcd39;
+    --bs-btn-active-border-color: #ffc720;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #000;
+    --bs-btn-disabled-bg: #ffc107;
+    --bs-btn-disabled-border-color: #ffc107;
 }
-
+[data-bs-theme=dark]
 .add-to-cart:hover {
     background-color: #ffcc00;
     box-shadow: 0 0 12px #ffcc00;
 }
-
+[data-bs-theme=dark]
 .footer {
     background-color: #ff0099;
     color: #1a001f;
@@ -115,24 +130,182 @@ body {
     margin-top: 10px;
     font-weight: bold;
 }
-
+[data-bs-theme=dark]
 .carousel-control-prev-icon, .carousel-control-next-icon {
     background-color: #ff00ff;
 }
-
+[data-bs-theme=dark]
 .carousel-control-prev, .carousel-control-next {
-    background-color: rgba(0, 0, 0, 0.5);
     padding: 10px;
 }
-
+[data-bs-theme=dark]
 .carousel-control-prev-icon, .carousel-control-next-icon {
     width: 30px;
     height: 30px;
     background-color: #ff00ff;
 }
-
+[data-bs-theme=dark]
 .carousel-inner {
     justify-content: center !important;
     align-items: center !important;
     width: 100%; 
+}
+
+[data-bs-theme=light]
+body {
+    background-color: #ffffff !important;
+    color: black !important;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+[data-bs-theme=light]
+.window {
+    background-color: #ffffff;
+    border: 2px solid #a0a0a0;
+    width: 80%;
+    max-width: 900px;
+    margin: 20px;
+    padding: 15px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.15);
+    border-radius: 6px;
+}
+[data-bs-theme=light]
+.header {
+    background-color: #316ac5;
+    color: #ffffff;
+    text-align: center;
+    padding: 8px;
+    font-weight: bold;
+    text-transform: none;
+    border-radius: 4px 4px 0 0;
+}
+[data-bs-theme=light]
+.nav-bar {
+    background-color: #d4d0c8;
+    color: #000000;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #a0a0a0;
+    border-bottom: none;
+    border-radius: 6px 6px 0 0;
+}
+[data-bs-theme=light]
+[data-bs-theme=light] .nav-bar a {
+    color: #000080;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
+}
+
+    [data-bs-theme=light] .nav-bar a:hover {
+        text-decoration: underline;
+    }
+
+[data-bs-theme=light] .nav-bar span {
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+[data-bs-theme=light] .content {
+    margin-top: 10px;
+    background-color: #ffffff;
+    padding: 15px;
+    border: 1px solid #c0c0c0;
+    border-radius: 4px;
+}
+[data-bs-theme=light]
+.carousel-item {
+    justify-content: center !important;
+    align-items: center !important;
+    flex: 0 0 auto !important;
+    width: 100% !important;
+}
+[data-bs-theme=light]
+.card {
+    background-color: #a0a0a0 !important;
+    border: 1px solid #c0c0c0 !important;
+    position: relative;
+    box-shadow: 0 0 8px #c0c0c0 !important;
+    width: 100%;
+    max-width: 400px;
+    margin: 20px 0;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+}
+[data-bs-theme=light]
+.card-title {
+    color: black !important;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+[data-bs-theme=light]
+.card-text {
+    color: black;
+    margin-bottom: 20px;
+}
+[data-bs-theme=light]
+.add-to-cart {
+    background-color: #d4d0c8!important;
+    color: #000000!important;
+    padding: 6px 12px!important;
+    cursor: pointer!important;
+    font-size: 14px!important;
+    transition: background-color 0.2s ease !important;
+}
+[data-bs-theme=light]
+.add-to-cart:hover {
+    background-color: #c0c0c0!important;
+}
+[data-bs-theme=light]
+.footer {
+    background-color: #c0c0c0;
+    color: black;
+    text-align: center;
+    padding: 5px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+[data-bs-theme=light]
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: #c0c0c0!important;
+}
+[data-bs-theme=light]
+.carousel-control-prev, .carousel-control-next {
+    padding: 10px;
+}
+[data-bs-theme=light]
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    width: 30px;
+    height: 30px;
+    background-color: #c0c0c0!important;
+}
+[data-bs-theme=light]
+.carousel-inner {
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100%; 
+}
+
+.moon {
+	font-size: 28px;
+	color: #fbc02d;
+}
+.controles {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.btnSwitch {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
