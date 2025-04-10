@@ -192,23 +192,24 @@ body {
     border: 1px solid #a0a0a0;
     border-bottom: none;
     border-radius: 6px 6px 0 0;
-}
-[data-bs-theme=light]
-[data-bs-theme=light] .nav-bar a {
+  }
+  [data-bs-theme=light]
+  .nav-bar a {
     color: #000080;
     text-decoration: none;
     margin: 0 15px;
     font-size: 16px;
-}
-
-    [data-bs-theme=light] .nav-bar a:hover {
-        text-decoration: underline;
-    }
-
-[data-bs-theme=light] .nav-bar span {
-    margin: 0 10px;
-    cursor: pointer;
-}
+  }
+  [data-bs-theme=light]
+  .nav-bar a:hover {
+      text-decoration: underline;
+  }
+  
+  [data-bs-theme=light]
+  .nav-bar span {
+      margin: 0 10px;
+      cursor: pointer;
+  }
 
 [data-bs-theme=light] .content {
     margin-top: 10px;
