@@ -1,0 +1,331 @@
+[data-bs-theme=dark]
+.body {
+    background-color: #1a001f;
+    color: #ff00ff;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+[data-bs-theme=dark]
+.window {
+    background-color: #220033;
+    border: 2px solid #ff00ff;
+    width: 80%;
+    max-width: 900px;
+    margin: 20px;
+    padding: 15px;
+    box-shadow: 0 0 15px #ff00ff;
+}
+
+[data-bs-theme=dark]
+.header {
+    background-color: #ff0099;
+    color: #1a001f;
+    text-align: center;
+    padding: 5px;
+    font-weight: bold;
+    position: relative;
+    box-shadow: 0 0 8px #ff0099;
+    text-transform: uppercase;
+}
+
+[data-bs-theme=dark]
+.nav-bar {
+    background-color: #ff1e56;
+    color: #ffeebb;
+    padding: 10px;
+    box-shadow: 0 0 8px #ff1e56;
+    text-align: center;
+}
+
+    [data-bs-theme=dark]
+    .nav-bar a {
+        color: #ffeebb;
+        text-decoration: none;
+        margin: 0 15px;
+        font-weight: bold;
+        font-size: 18px;
+        display: inline-block;
+    }
+
+        [data-bs-theme=dark]
+        .nav-bar a:hover {
+            text-decoration: underline;
+        }
+
+    [data-bs-theme=dark]
+    .nav-bar span {
+        margin: 0 10px;
+        cursor: pointer;
+    }
+
+[data-bs-theme=dark]
+.content {
+    margin-top: 10px;
+    background-color: #330044;
+    padding: 15px;
+    border: 1px solid #ff00ff;
+    box-shadow: 0 0 10px #ff00ff;
+}
+
+[data-bs-theme=dark]
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+    [data-bs-theme=dark]
+    .login-form label {
+        margin-bottom: 5px;
+    }
+
+    [data-bs-theme=dark]
+    .login-form input {
+        padding: 5px;
+        border: 1px solid #ff00ff;
+        background-color: #440055;
+        color: #ff00ff;
+    }
+
+[data-bs-theme=dark]
+.submit-btn {
+    background-color: #ff9900;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 2px;
+    display: inline-block;
+    box-shadow: 0 0 8px #ff9900;
+    text-align: center;
+    font-size: 15px;
+}
+
+[data-bs-theme=dark]
+.registro-btn {
+    background-color: #ff9900;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 15px;
+    display: inline-block;
+    box-shadow: 0 0 8px #ff9900;
+    text-align: center;
+    font-size: 15px;
+}
+
+[data-bs-theme=dark]
+.footer {
+    background-color: #ff0099;
+    color: #1a001f;
+    text-align: center;
+    padding: 5px;
+    box-shadow: 0 0 8px #ff0099;
+    margin-top: 10px;
+}
+
+[data-bs-theme=dark]
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+    [data-bs-theme=dark]
+    .register-form label {
+        margin-bottom: 5px;
+    }
+
+    [data-bs-theme=dark]
+    .register-form input {
+        padding: 5px;
+        border: 1px solid #ff00ff;
+        background-color: #440055;
+        color: #ff00ff;
+    }
+
+[data-bs-theme=dark]
+.login-btn {
+    background-color: #ff9900;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 2px;
+    display: inline-block;
+    box-shadow: 0 0 8px #ff9900;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+[data-bs-theme=dark]
+.btn-dark {
+    background-color: #ff9900;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 2px;
+    display: inline-block;
+    box-shadow: 0 0 8px #ff9900;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+
+[data-bs-theme=light]
+body {
+    background-color: #ffffff;
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+[data-bs-theme=light] .body {
+    background-color: #e4e4e4;
+    color: #000000;
+    font-family: Tahoma, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+[data-bs-theme=light] .window {
+    background-color: #ffffff;
+    border: 2px solid #a0a0a0;
+    width: 80%;
+    max-width: 900px;
+    margin: 20px;
+    padding: 15px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.15);
+    border-radius: 6px;
+}
+
+[data-bs-theme=light] .header {
+    background-color: #316ac5;
+    color: #ffffff;
+    text-align: center;
+    padding: 8px;
+    font-weight: bold;
+    text-transform: none;
+    border-radius: 4px 4px 0 0;
+}
+
+[data-bs-theme=light] .nav-bar {
+    background-color: #d4d0c8;
+    color: #000000;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #a0a0a0;
+    border-bottom: none;
+    border-radius: 6px 6px 0 0;
+}
+
+    [data-bs-theme=light] .nav-bar a {
+        color: #000080;
+        text-decoration: none;
+        margin: 0 15px;
+        font-size: 16px;
+    }
+
+        [data-bs-theme=light] .nav-bar a:hover {
+            text-decoration: underline;
+        }
+
+    [data-bs-theme=light] .nav-bar span {
+        margin: 0 10px;
+        cursor: pointer;
+    }
+
+[data-bs-theme=light] .content {
+    margin-top: 10px;
+    background-color: #ffffff;
+    padding: 15px;
+    border: 1px solid #c0c0c0;
+    border-radius: 4px;
+}
+
+[data-bs-theme=light] .login-form,
+[data-bs-theme=light] .register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+    [data-bs-theme=light] .login-form label,
+    [data-bs-theme=light] .register-form label {
+        margin-bottom: 5px;
+        font-size: 14px;
+    }
+
+    [data-bs-theme=light] .login-form input,
+    [data-bs-theme=light] .register-form input {
+        padding: 5px;
+        border: 1px solid #a0a0a0;
+        background-color: #ffffff;
+        color: #000000;
+        border-radius: 4px;
+        font-size: 14px;
+    }
+
+[data-bs-theme=light] .submit-btn,
+[data-bs-theme=light] .registro-btn,
+[data-bs-theme=light] .login-btn,
+[data-bs-theme=light] .btn-dark {
+    background-color: #d4d0c8;
+    color: #000000;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+}
+
+    [data-bs-theme=light] .submit-btn:hover,
+    [data-bs-theme=light] .registro-btn:hover,
+    [data-bs-theme=light] .login-btn:hover,
+    [data-bs-theme=light] .btn-dark:hover {
+        background-color: #c0c0c0;
+    }
+
+[data-bs-theme=light] .footer {
+    background-color: #d4d0c8;
+    color: #000000;
+    text-align: center;
+    padding: 6px;
+    font-size: 13px;
+    border-top: 1px solid #a0a0a0;
+    margin-top: 15px;
+    border-radius: 0 0 6px 6px;
+}
+
+.moon {
+	font-size: 28px;
+	color: #fbc02d;
+}
+.controles {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.btnSwitch {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
