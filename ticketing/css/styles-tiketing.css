@@ -131,7 +131,27 @@ input:focus, textarea:focus {
     font-weight: bold;
 }
 
+[data-bs-theme=dark] select{
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 40%;
+    padding: 10px;
+    border: 2px solid #ff00ff;
+    border-radius: 8px;
+    background-color: #440055;
+    color: #fff;
+    font-size: 1em;
+    font-family: 'Courier New', Courier, monospace;
+    outline: none;
+    transition: 0.3s;
+    margin-bottom: 10px;
+    text-align: center;
+}
 
+[data-bs-theme=dark] select:hover{
+    background-color: #330044;
+}
 
 [data-bs-theme=light]
 body {
@@ -256,6 +276,28 @@ input:focus, textarea:focus {
     padding: 5px;
     margin-top: 10px;
     font-weight: bold;
+}
+
+[data-bs-theme=light] select{
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 40%;
+    padding: 10px;
+    border: 2px solid #a0a0a0;
+    border-radius: 8px;
+    background-color: #c0c0c0;
+    color: #333;
+    font-size: 1em;
+    font-family: 'Courier New', Courier, monospace;
+    outline: none;
+    transition: 0.3s;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+[data-bs-theme=light] select:hover{
+    background-color: #d4d0c8;
 }
 
 .moon {

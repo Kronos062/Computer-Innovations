@@ -27,16 +27,20 @@
         <div class="content">
             <h2>Formulario de Incidencia</h2>
             <form action="#" method="post">
+
+                <label for="nombre">Asunto:</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Descripción" required>
+                
                 <label for="incidencia">Incidencia:</label>
                 <textarea id="incidencia" class="textarea" name="incidencia" rows="4" placeholder="Describe tu incidencia..." required></textarea>
 
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
-
-                <label for="correo">Correo:</label>
-                <input type="email" id="correo" name="correo" placeholder="Tu correo electrónico" required>
-
-                <button type="submit" class="submit-btn">Enviar</button>
+                <label for="nombre">Prioridad:</label>
+                <select class="select" name="prioridad" id="lang">
+                    <option class="option" value="baja">Baja</option>
+                    <option class="option" value="media">Media</option>
+                    <option class="option" value="alta">Alta</option>
+                  </select>
+                <input type="submit" class="submit-btn" value="Enviar"></input>
             </form>
         </div>
         <div class="footer">
