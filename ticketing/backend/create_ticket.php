@@ -4,10 +4,9 @@ require 'db.php';
 
 $data = json_decode(file_get_contents("php://input"), true);
 
-// Simulación de IDs (debes obtenerlos de sesión o frontend si implementas login)
-$id_empleado = 1; // ejemplo fijo
-$id_cliente = 1;  // ejemplo fijo
-$id_categoria = 1; // ejemplo fijo
+$id_empleado = 1;
+$id_cliente = 1;
+$id_categoria = 1;
 
 $titulo = $mysqli->real_escape_string($data['titulo']);
 $descripcion = $mysqli->real_escape_string($data['descripcion']);
