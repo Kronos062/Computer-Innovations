@@ -32,7 +32,7 @@ if ($stmt_check->num_rows > 0) {
 }
 $stmt_check->close();
 
-$sql = "INSERT INTO Usuarios (usuario, nombreApellido, email, contrasena, id_rol) VALUES (?, ?, ?, ?, ?)";
+$sql = "INSERT INTO Usuarios (usuario, nombreApellido, email, contrasena) VALUES (?, ?, ?, ?)";
 $stmt = $conexion->prepare($sql);
 $usuario = explode("@", $correo)[0];
 $stmt->bind_param("ssssi", $usuario, $nombre, $correo, $contraseña, $id_rol);

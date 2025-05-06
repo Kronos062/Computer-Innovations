@@ -70,3 +70,11 @@ CREATE TABLE IF NOT EXISTS Tickets (
     FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente) ON DELETE CASCADE,
     FOREIGN KEY (id_categoria) REFERENCES Categoria(id_categoria) ON DELETE CASCADE
 );
+
+CREATE TABLE IF NOT EXISTS Licencias (
+    id_licencia INT AUTO_INCREMENT PRIMARY KEY,
+    codigo VARCHAR(16) UNIQUE NOT NULL,
+    id_cliente INT,
+    fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente) ON DELETE SET NULL
+);
