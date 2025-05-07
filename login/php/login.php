@@ -25,17 +25,16 @@ if (!isset($datos['correo']) || !isset($datos['contraseña'])) {
 $correo = $datos['correo'];
 $contraseña = $datos['contraseña'];
 
-$sql = "SELECT id_usuario, nombreApellido, contrasena FROM Usuarios WHERE email = ?";
-$stmt = $conexion->prepare($sql);
-$stmt->bind_param("s", $correo);
-$stmt->execute();
-$stmt->store_result();
+$correo_simulado = "ejemplo@gmail.com";
+$nombre_simulado = "cliente";
+$id_simulado = 5;
+$contraseña_simulada = "1234";
+if ($correo === $correo_simulado && $contraseña === $contraseña_simulada) {
 
-if ($stmt->num_rows > 0) {
-    $stmt->bind_result($id, $nombre, $hash);
-    $stmt->fetch();
-
-    if (password_verify($contraseña, $hash)) {
+    setcookie('usuario_nombre', $nombre_simulado, time() + 3600, '/');
+    setcookie('id_usuario', $id_simulado, time() + 3600, '/');
+    
+    if ($contraseña === $contraseña_simulada) {
         $_SESSION['usuario_id'] = $id;
         $_SESSION['usuario_nombre'] = $nombre;
 
