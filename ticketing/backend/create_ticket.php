@@ -13,8 +13,8 @@ $descripcion = $mysqli->real_escape_string($data['descripcion']);
 $lugar = $mysqli->real_escape_string($data['lugar']);
 $prioridad = $mysqli->real_escape_string($data['prioridad']);
 
-$sql = "INSERT INTO Tickets (id_empleado, id_cliente, id_categoria, asunto, descripcion, direccion, prioridad) 
-        VALUES ($id_empleado, $id_cliente, $id_categoria, '$titulo', '$descripcion', '$lugar', '$prioridad')";
+$sql = "INSERT INTO Tickets (asunto, descripcion, direccion, prioridad) 
+        VALUES ('$titulo', '$descripcion', '$lugar', '$prioridad')";
 
 if ($mysqli->query($sql)) {
     echo json_encode(['status' => 'success']);

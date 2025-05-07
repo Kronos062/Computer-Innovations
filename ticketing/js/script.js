@@ -32,7 +32,7 @@ async function crearTicket() {
     lugar: document.getElementById('lugar').value,
     prioridad: document.getElementById('prioridad').value,
   };
-
+  console.log(data);
   const res = await fetch('backend/create_ticket.php', {
     method: 'POST',
     body: JSON.stringify(data),
@@ -40,6 +40,7 @@ async function crearTicket() {
   });
 
   if (res.ok) {
+
     alert('Ticket creado con éxito');
     document.getElementById('ticketForm').reset();
     cargarTickets();
