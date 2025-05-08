@@ -56,18 +56,18 @@ CREATE TABLE IF NOT EXISTS Clientes (
 CREATE TABLE IF NOT EXISTS Tickets (
     id_ticket INT AUTO_INCREMENT PRIMARY KEY,
     id_empleado INT NOT NULL,
-    id_cliente INT NOT NULL,
+    email VARCHAR(100),
     id_categoria INT NOT NULL,
     asunto VARCHAR(200) NOT NULL,
-    descripcion VARCHAR(5000) NOT NULL,
-    direccion VARCHAR(150) NOT NULL,
+    descripcion VARCHAR(5000),
+    direccion VARCHAR(150),
     solucion VARCHAR(5000),
     prioridad VARCHAR(15) NOT NULL DEFAULT 1,
     estado VARCHAR(25) NOT NULL DEFAULT 'Abierto',
+    visitado BOOLEAN NOT NULL DEFAULT false,
     fechaEmision DATE NOT NULL DEFAULT (CURRENT_DATE),
     fechaCierre DATE NULL,
     FOREIGN KEY (id_empleado) REFERENCES Empleados(id_empleado) ON DELETE CASCADE,
-    FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente) ON DELETE CASCADE,
     FOREIGN KEY (id_categoria) REFERENCES Categoria(id_categoria) ON DELETE CASCADE
 );
 
