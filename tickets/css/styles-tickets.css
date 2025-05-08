@@ -1,78 +1,158 @@
-body {
-  font-family: Arial, sans-serif;
+[data-bs-theme=dark] body {
+  background-color: #1a001f;
+  color: #ff00ff;
+  font-family: 'Courier New', Courier, monospace;
   margin: 0;
   padding: 0;
-  transition: background-color 0.3s, color 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-[data-bs-theme="dark"] {
-  background-color: #121212;
-  color: #fff;
-}
-
-[data-bs-theme="light"] {
-  background-color: #f5f5f5;
-  color: #000;
-}
-
-.window {
-  width: 90%;
-  margin: auto;
+[data-bs-theme=dark] .window {
+  background-color: #220033;
+  border: 2px solid #ff00ff;
+  width: 80%;
   max-width: 900px;
-  background-color: var(--bs-body-bg);
-  color: var(--bs-body-color);
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  transition: background-color 0.3s, color 0.3s;
+  margin: 20px;
+  padding: 15px;
+  box-shadow: 0 0 15px #ff00ff;
 }
 
-.header {
-  font-size: 24px;
+[data-bs-theme=dark] .header {
+  background-color: #ff0099;
+  color: #1a001f;
   text-align: center;
-  margin-bottom: 20px;
+  padding: 5px;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
-.nav-bar {
+[data-bs-theme=dark] .nav-bar {
+  background-color: #ff1e56;
+  color: #ffeebb;
+  padding: 10px;
   text-align: center;
-  margin-bottom: 20px;
 }
 
-.nav-bar a {
-  color: var(--bs-primary);
-  margin: 0 10px;
+[data-bs-theme=dark] .nav-bar a {
+  color: #ffeebb;
   text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+  font-size: 18px;
+  display: inline-block;
+}
+
+[data-bs-theme=dark] .nav-bar a:hover {
+  text-decoration: underline;
+}
+
+[data-bs-theme=dark] .ticket {
+  background-color: #330044;
+  border: 1px solid #ff00ff;
+  box-shadow: 0 0 10px #ff00ff;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 8px;
+}
+
+[data-bs-theme=dark] .footer {
+  background-color: #ff0099;
+  color: #1a001f;
+  text-align: center;
+  padding: 5px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+[data-bs-theme=light] body {
+  background-color: #ffffff;
+  color: black;
+  font-family: 'Courier New', Courier, monospace;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+[data-bs-theme=light] .window {
+  background-color: #ffffff;
+  border: 2px solid #a0a0a0;
+  width: 80%;
+  max-width: 900px;
+  margin: 20px;
+  padding: 15px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+}
+
+[data-bs-theme=light] .header {
+  background-color: #316ac5;
+  color: #ffffff;
+  text-align: center;
+  padding: 8px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 4px 4px 0 0;
+}
+
+[data-bs-theme=light] .nav-bar {
+  background-color: #d4d0c8;
+  color: #000000;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #a0a0a0;
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+}
+
+[data-bs-theme=light] .nav-bar a {
+  color: #000080;
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: 16px;
+}
+
+[data-bs-theme=light] .nav-bar a:hover {
+  text-decoration: underline;
+}
+
+[data-bs-theme=light] .ticket {
+  background-color: #e0e0e0;
+  border: 1px solid #a0a0a0;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 6px;
+}
+
+[data-bs-theme=light] .footer {
+  background-color: #d4d0c8;
+  color: #000000;
+  text-align: center;
+  padding: 6px;
+  font-size: 13px;
+  border-top: 1px solid #a0a0a0;
+  margin-top: 15px;
+  border-radius: 0 0 6px 6px;
+}
+
+.moon {
+  font-size: 28px;
+  color: #fbc02d;
 }
 
 .controles {
-  position: absolute;
-  top: 15px;
-  right: 20px;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .btnSwitch {
-  background: none;
+  background-color: transparent;
   border: none;
-  font-size: 1.8rem;
-  color: var(--bs-body-color);
   cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.btnSwitch:hover {
-  transform: scale(1.1);
-}
-
-.ticket {
-  border: 1px solid #888;
-  padding: 15px;
-  border-radius: 10px;
-  margin-bottom: 15px;
-  background-color: rgba(255, 255, 255, 0.05);
-  transition: background-color 0.3s;
-}
-
-[data-bs-theme="light"] .ticket {
-  background-color: #fff;
-  border-color: #ccc;
 }
