@@ -1,30 +1,5 @@
 document.addEventListener('DOMContentLoaded', cargarTickets);
 
-async function cargarTickets() {
-  const res = await fetch('backend/get_tickets.php');
-  const tickets = await res.json();
-  const contenedor = document.getElementById('ticket-list');
-  contenedor.innerHTML = '';
-
-  tickets.forEach(ticket => {
-    const ticketHTML = `
-      <div class="ticket-item d-flex justify-content-between align-items-start border p-3 mb-2 rounded">
-        <div>
-          <h4>${ticket.titulo}</h4>
-          <p><strong>Descripción:</strong> ${ticket.descripcion}</p>
-          <p><strong>Lugar:</strong> ${ticket.lugar}</p>
-          <p><strong>Afectado:</strong> ${ticket.afectado}</p>
-          <p><strong>Prioridad:</strong> ${ticket.prioridad}</p>
-        </div>
-        <div>
-          <button onclick="eliminarTicket(${ticket.id})" class="btn btn-danger">Eliminar</button>
-        </div>
-      </div>
-    `;
-    contenedor.innerHTML += ticketHTML;
-  });
-}
-
 async function crearTicket() {
   const data = {
     titulo: document.getElementById('titulo').value,
