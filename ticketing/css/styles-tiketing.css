@@ -235,3 +235,7 @@
 [data-bs-theme=light] .ticket-item h4 {
   color: #000080;
 }
+.moon {
+  font-size: 28px;
+  color: #fbc02d;
+}
