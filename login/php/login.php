@@ -1,5 +1,5 @@
 <?php
-include 'conexion.php';
+include '../../conexion/conexion.php';
 session_start();
 header('Content-Type: application/json');
 
@@ -34,7 +34,7 @@ if ($stmt->num_rows > 0) {
     $stmt->bind_result($id_usuario, $nombre, $hash);
     $stmt->fetch();
 
-    if (password_verify($contraseña, $hash)) {
+    if ($contraseña == $hash) {
         setcookie('usuario_nombre', $nombre, time() + 3600, '/');
         setcookie('id_usuario', $id_usuario, time() + 3600, '/');
         $_SESSION['usuario_id'] = $id_usuario;
