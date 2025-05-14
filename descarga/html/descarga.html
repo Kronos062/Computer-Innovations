@@ -8,18 +8,17 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>    
 </head>
 <body>
     <div class="controles">
-		<button id="btnSwitch" class="btnSwitch"><ion-icon name="moon" class="dark-mode-button moon"></ion-icon></button>
+        <button id="btnSwitch" class="btnSwitch"><ion-icon name="moon" class="dark-mode-button moon"></ion-icon></button>
     </div>
     <div class="window">
         <div class="header">
             NEO ARCHI - COMPUTER INNOVATIONS
         </div>
-        <div class="nav-bar">
+        <div class="nav-bar" id="navBar">
             <a href="../../main/html/main.html">Inicio</a> |
             <a href="../../login/html/login.html">Login</a> |
             <a href="../../licencia/html/licencia.html">Licencia</a>
@@ -74,37 +73,56 @@
         </div>
         <div class="footer">Neo Archi - Computer Innovations &copy; 2025</div>
     </div>
+    <div class="user-bubble" id="userBubble" style="display: none;">
+        <ion-icon name="person-circle-outline" class="user-icon"></ion-icon>
+        <div class="logout-menu" id="logoutMenu">
+            <button id="logoutBtn">Cerrar sesión</button>
+        </div>
+    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const loginBtn = document.querySelector(".login-btn");
-    
-            fetch('../../login/php/login.php')
-                .then(response => response.json())
-                .then(data => {
-                    if (data.logueado) {
-                        loginBtn.textContent = "Cerrar sesión";
-                        loginBtn.href = "#";
-                        loginBtn.addEventListener("click", cerrarSesion);
-                    }
-                });
-    
-            function cerrarSesion(e) {
-                e.preventDefault();
-    
-                fetch('../../login/php/logout.php')
-                    .then(response => response.json())
-                    .then(data => {
-                        alert(data.mensaje);
-                        window.location.reload();
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        alert('Error al cerrar sesión');
-                    });
-            }
-        });
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+
+        const userLoggedIn = getCookie("usuario_nombre");
+        
+        if (userLoggedIn) {
+            const userBubble = document.getElementById("userBubble");
+            userBubble.style.display = "block";
+
+            let menuVisible = false;
+            userBubble.addEventListener('click', () => {
+                menuVisible = !menuVisible;
+                document.getElementById("logoutMenu").style.display = menuVisible ? 'block' : 'none';
+            });
+
+            document.addEventListener("click", (e) => {
+                if (e.target.id === "logoutBtn") {
+                    fetch("../../login/php/logout.php")
+                        .then(res => {
+                            if (res.ok) {
+                                document.cookie = "usuario_nombre=; Max-Age=0; path=/";
+                                document.cookie = "id_usuario=; Max-Age=0; path=/";
+                                window.location.href = "../../login/html/login.html";
+                            } else {
+                                alert("Error al cerrar sesión.");
+                            }
+                        }).catch(err => console.error("Error:", err));
+                }
+            });
+
+            const navBar = document.getElementById("navBar");
+            const ticketingLink = document.createElement("a");
+            ticketingLink.href = "../ticketing/html/ticketing.html";
+            ticketingLink.textContent = "Ticketing";
+            navBar.appendChild(ticketingLink);
+        }
+    </script>
+
+    <script>
         document.getElementById('btnSwitch').addEventListener('click', () => {
             const currentTheme = document.documentElement.getAttribute('data-bs-theme');
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';

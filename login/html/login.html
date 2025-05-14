@@ -12,7 +12,7 @@
 </head>
 <body class="body">
     <div class="controles">
-		<button id="btnSwitch" class="btnSwitch"><ion-icon name="moon" class="dark-mode-button moon"></ion-icon></button>
+        <button id="btnSwitch" class="btnSwitch"><ion-icon name="moon" class="dark-mode-button moon"></ion-icon></button>
     </div>
     <div class="window">
         <div class="header">
@@ -38,7 +38,105 @@
         </div>
         <div class="footer">Neo Archi - Computer Innovations &copy; 2025</div>
     </div>
+    <div class="user-bubble" id="userBubble" style="display: none;">
+        <ion-icon name="person-circle-outline" class="user-icon"></ion-icon>
+        <div class="logout-menu" id="logoutMenu">
+            <button id="logoutBtn">Cerrar sesión</button>
+        </div>
+    </div>
     <script>
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+
+        const userLoggedIn = getCookie("usuario_nombre");
+        if (userLoggedIn) {
+            const userBubble = document.createElement("div");
+            userBubble.className = "user-bubble";
+            userBubble.innerHTML = `
+                <ion-icon name="person-circle-outline" class="user-icon"></ion-icon>
+                <div class="logout-menu" id="logoutMenu">
+                    <button id="logoutBtn">Cerrar sesión</button>
+                </div>
+            `;
+            document.body.appendChild(userBubble);
+
+            let menuVisible = false;
+
+            userBubble.addEventListener('click', () => {
+                menuVisible = !menuVisible;
+                document.getElementById("logoutMenu").style.display = menuVisible ? 'block' : 'none';
+            });
+
+            document.addEventListener("click", (e) => {
+                if (e.target.id === "logoutBtn") {
+                    fetch("../../login/php/logout.php")
+                        .then(res => {
+                            if (res.ok) {
+                                document.cookie = "usuario_nombre=; Max-Age=0; path=/";
+                                document.cookie = "id_usuario=; Max-Age=0; path=/";
+                                window.location.href = "../../login/html/login.html";
+                            } else {
+                                alert("Error al cerrar sesión.");
+                            }
+                        }).catch(err => console.error("Error:", err));
+                }
+            });
+        }
+    </script>    
+
+    <script>
+        const isMainPage = window.location.pathname.includes("main.html");
+        if (!isMainPage && userLoggedIn) {
+            const navBar = document.querySelector(".nav-bar");
+            if (navBar) {
+                const link = document.createElement("a");
+                link.href = "../ticketing/html/ticketing.html"; 
+                link.textContent = "Ticketing";
+                link.className = "ticketing-tab";
+                navBar.appendChild(link);
+            }
+        }
+    </script>
+
+    <script>
+        function showModal(modalId) {
+            var modal = document.getElementById(modalId);
+            modal.style.display = "block";
+        }
+
+        function closeModal(modalId) {
+            var modal = document.getElementById(modalId);
+            modal.style.display = "none";
+        }
+
+        function actualizarCantidad(modalId, change) {
+            var cantidadElement = document.getElementById('cantidad' + (modalId === 'modal1' ? '1' : '2'));
+            var currentcantidad = parseInt(cantidadElement.innerText);
+            var newcantidad = currentcantidad + change;
+            
+            if (newcantidad >= 1) {
+                cantidadElement.innerText = newcantidad;
+            }
+        }
+
+        function comprar(modalId) {
+            var cantidad = document.getElementById('cantidad' + (modalId === 'modal1' ? '1' : '2')).innerText;
+            alert('Has adquirido ' + cantidad + ' licencias para ' + (modalId === 'modal1' ? 'Organización' : 'Usuario') + '.');
+            closeModal(modalId); 
+        }
+
+        window.onclick = function(event) {
+            var modals = document.getElementsByClassName("modal");
+            for (var i = 0; i < modals.length; i++) {
+                if (event.target == modals[i]) {
+                    modals[i].style.display = "none";
+                }
+            }
+        }
+
         document.getElementById('btnSwitch').addEventListener('click', () => {
             const currentTheme = document.documentElement.getAttribute('data-bs-theme');
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
@@ -51,6 +149,6 @@
                 icon.setAttribute('name', 'sunny');
             }
         });
-    </script> 
+    </script>
 </body>
 </html>

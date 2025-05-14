@@ -9,11 +9,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
 </head>
 <body>
     <div class="controles">
-		<button id="btnSwitch" class="btnSwitch"><ion-icon name="moon" class="dark-mode-button moon"></ion-icon></button>
+        <button id="btnSwitch" class="btnSwitch"><ion-icon name="moon" class="dark-mode-button moon"></ion-icon></button>
     </div>
     <div class="window">
         <div class="header">
@@ -27,7 +26,7 @@
         <div class="content">
             <div class="product">
                 <h2>Licencia Para Organización</h2>
-                <p>Licencia para desbloquear los programas y fucniones para organizaciones.</p>
+                <p>Licencia para desbloquear los programas y funciones para organizaciones.</p>
                 <ul>
                     <li>Precio: 15€/mes</li>
                 </ul>
@@ -35,7 +34,7 @@
             </div>
             <div class="product">
                 <h2>Licencia Para Usuario</h2>
-                <p>Licencia para desbloquear el paquete ofimatico, calculadora y basicos para tu sistema operativo.</p>
+                <p>Licencia para desbloquear el paquete ofimático, calculadora y básicos para tu sistema operativo.</p>
                 <ul>
                     <li>Precio: 6€/mes</li>
                 </ul>
@@ -70,18 +69,63 @@
             <button class="comprar-btn" onclick="comprar('modal2')">Adquirir</button>
         </div>
     </div>
-    
+
+    <div class="user-bubble" id="userBubble" style="display: none;">
+        <ion-icon name="person-circle-outline" class="user-icon"></ion-icon>
+        <div class="logout-menu" id="logoutMenu" style="display: none;">
+            <button id="logoutBtn">Cerrar sesión</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const userLoggedIn = getCookie("usuario_nombre");
+            if (userLoggedIn) {
+                const userBubble = document.getElementById("userBubble");
+                userBubble.style.display = "block";
+
+                const navBar = document.querySelector(".nav-bar");
+                const link = document.createElement("a");
+                link.href = "../ticketing/html/ticketing.html"; 
+                link.textContent = "Ticketing";
+                link.className = "ticketing-tab";
+                navBar.appendChild(link);
+
+                let menuVisible = false;
+                userBubble.addEventListener('click', () => {
+                    menuVisible = !menuVisible;
+                    document.getElementById("logoutMenu").style.display = menuVisible ? 'block' : 'none';
+                });
+
+                document.addEventListener("click", (e) => {
+                    if (e.target.id === "logoutBtn") {
+                        fetch("../../login/php/logout.php")
+                            .then(res => {
+                                if (res.ok) {
+                                    document.cookie = "usuario_nombre=; Max-Age=0; path=/";
+                                    document.cookie = "id_usuario=; Max-Age=0; path=/";
+                                    window.location.href = "../../login/html/login.html";
+                                } else {
+                                    alert("Error al cerrar sesión.");
+                                }
+                            }).catch(err => console.error("Error:", err));
+                    }
+                });
+            }
+        });
+    </script>
+
     <script>
         function showModal(modalId) {
             var modal = document.getElementById(modalId);
             modal.style.display = "block";
         }
-    
+
         function closeModal(modalId) {
             var modal = document.getElementById(modalId);
             modal.style.display = "none";
         }
-    
+
         function actualizarCantidad(modalId, change) {
             var cantidadElement = document.getElementById('cantidad' + (modalId === 'modal1' ? '1' : '2'));
             var currentcantidad = parseInt(cantidadElement.innerText);
@@ -91,13 +135,13 @@
                 cantidadElement.innerText = newcantidad;
             }
         }
-    
+
         function comprar(modalId) {
             var cantidad = document.getElementById('cantidad' + (modalId === 'modal1' ? '1' : '2')).innerText;
             alert('Has adquirido ' + cantidad + ' licencias para ' + (modalId === 'modal1' ? 'Organización' : 'Usuario') + '.');
             closeModal(modalId); 
         }
-    
+
         window.onclick = function(event) {
             var modals = document.getElementsByClassName("modal");
             for (var i = 0; i < modals.length; i++) {
@@ -106,6 +150,7 @@
                 }
             }
         }
+
         document.getElementById('btnSwitch').addEventListener('click', () => {
             const currentTheme = document.documentElement.getAttribute('data-bs-theme');
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
