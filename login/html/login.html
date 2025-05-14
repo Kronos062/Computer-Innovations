@@ -25,7 +25,7 @@
         </div>
         <div class="content">
             <h2>Inicia Sesión</h2>
-            <form id="loginForm" class="login-form">
+            <form id="loginForm" class="login-form" action="../php/login.php" method="POST">
                 <label for="email">Correo:</label>
                 <input type="email" id="email" name="email" required>
 
@@ -39,33 +39,6 @@
         <div class="footer">Neo Archi - Computer Innovations &copy; 2025</div>
     </div>
     <script>
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const correo = document.getElementById('email').value;
-            const contraseña = document.getElementById('password').value;
-    
-            fetch('../php/login.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ correo: correo, contraseña: contraseña }),
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.mensaje) {
-                    alert(data.mensaje);
-                    window.location.href = '../../main/html/main.html';
-                } else {
-                    alert('Error: ' + data.error);
-                }
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-                alert('Error al intentar iniciar sesión');
-            });
-        });
         document.getElementById('btnSwitch').addEventListener('click', () => {
             const currentTheme = document.documentElement.getAttribute('data-bs-theme');
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';

@@ -1,7 +1,6 @@
 <?php
 include '../../conexion/conexion.php';
 session_start();
-header('Content-Type: application/json');
 
 if ($_SERVER["REQUEST_METHOD"] === "GET") {
     if (isset($_SESSION['usuario_nombre'])) {
@@ -12,17 +11,16 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
     exit;
 }
 
-$json = file_get_contents('php://input');
-$datos = json_decode($json, true);
+$correo = $_POST['email'];
+$contraseña = $_POST['password'];
 
-if (!isset($datos['correo']) || !isset($datos['contraseña'])) {
+if (!isset($correo) || !isset($contraseña)) {
     http_response_code(400);
     echo json_encode(["error" => "Faltan datos"]);
+        //A falta de probar:
+    header('Location: https://computerinnovations.com/web/login/html/login.html#fd');
     exit;
 }
-
-$correo = $datos['correo'];
-$contraseña = $datos['contraseña'];
 
 $sql = "SELECT id_usuario, nombreApellido, contrasena FROM Usuarios WHERE email = ?";
 $stmt = $conexion->prepare($sql);
@@ -33,33 +31,45 @@ $stmt->store_result();
 if ($stmt->num_rows > 0) {
     $stmt->bind_result($id_usuario, $nombre, $hash);
     $stmt->fetch();
+    
+    if (password_verify($contraseña, $hash)) {
+        //Selecciona el cliente i emplead basandose en el usuario
+        $sql = "SELECT e.id_empleado, c.id_cliente FROM Usuarios u LEFT JOIN Empleados e ON u.id_usuario = e.id_usuario LEFT JOIN Clientes c ON u.id_usuario = c.id_usuario WHERE u.id_usuario = ?";
+        $newstmt = $conexion->prepare($sql);
+        $newstmt->bind_param("i", $id_usuario);
+        $newstmt->execute();
+        $newstmt->store_result();
+        $newstmt->bind_result($id_empleado, $id_cliente);
+        $newstmt->fetch();
 
-    if ($contraseña == $hash) {
+        if ($newstmt->num_rows > 0) {
+            if ($id_cliente != null) {
+                $_SESSION['cliente_id'] = $id_cliente;
+            } elseif ($id_empleado != null) {
+                $_SESSION['empleado_id'] = $id_empleado;
+            }
+        }
+        $newstmt->close();
+
         setcookie('usuario_nombre', $nombre, time() + 3600, '/');
         setcookie('id_usuario', $id_usuario, time() + 3600, '/');
         $_SESSION['usuario_id'] = $id_usuario;
         $_SESSION['usuario_nombre'] = $nombre;
         echo json_encode(["mensaje" => "Has iniciado sesión correctamente"]);
+        echo "<pre>";
+        print_r($_SESSION);
+        echo "</pre>";
+        //A falta de probar:
+        header('Location: https://computerinnovations.com/web/main/html/main.html');
     } else {
         http_response_code(403);
+        echo "$contraseña  " . " $hash";
         echo json_encode(["error" => "Contraseña incorrecta"]);
+        //A falta de probar:
+        header('Location: https://computerinnovations.com/web/login/html/login.html#pi');
     }
 } else {
-    $correo_simulado = "computerinnovations@gmail.com";
-    $nombre_simulado = "CI";
-    $id_simulado = 5;
-    $contraseña_simulada = "1234";
-
-    if ($correo === $correo_simulado && $contraseña === $contraseña_simulada) {
-        setcookie('usuario_nombre', $nombre_simulado, time() + 3600, '/');
-        setcookie('id_usuario', $id_simulado, time() + 3600, '/');
-        $_SESSION['usuario_id'] = $id_simulado;
-        $_SESSION['usuario_nombre'] = $nombre_simulado;
-        echo json_encode(["mensaje" => "Has iniciado sesión correctamente"]);
-    } else {
-        http_response_code(404);
-        echo json_encode(["error" => "El usuario no existe o contraseña incorrecta"]);
-    }
+    //implementar
 }
 
 $stmt->close();
