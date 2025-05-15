@@ -72,12 +72,12 @@
 
             document.addEventListener("click", (e) => {
                 if (e.target.id === "logoutBtn") {
-                    fetch("../../login/php/logout.php")
+                    fetch("../php/logout.php")
                         .then(res => {
                             if (res.ok) {
                                 document.cookie = "usuario_nombre=; Max-Age=0; path=/";
                                 document.cookie = "id_usuario=; Max-Age=0; path=/";
-                                window.location.href = "../../login/html/login.html";
+                                window.location.href = "../html/login.html";
                             } else {
                                 alert("Error al cerrar sesión.");
                             }

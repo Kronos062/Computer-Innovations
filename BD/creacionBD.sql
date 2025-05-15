@@ -2,22 +2,18 @@ create DATABASE IF NOT EXISTS CI_NA_Tickets;
 
 use CI_NA_Tickets;
 
-CREATE USER 'admin'@'localhost' IDENTIFIED BY 'PerroSanxeDimision';
-CREATE USER 'empleado'@'localhost' IDENTIFIED BY 'BartomeuDimision';
-CREATE USER 'client'@'localhost' IDENTIFIED BY '1234';
+CREATE USER IF NOT EXISTS 'adminCINA'@'localhost' IDENTIFIED BY 'adminCINAadmin';
+CREATE USER IF NOT EXISTS 'empleadoCINA'@'localhost' IDENTIFIED BY 'empleadoCINA';
+CREATE USER IF NOT EXISTS 'clientCINA'@'localhost' IDENTIFIED BY '1234';
 
-GRANT ALL PRIVILEGES ON CI_NA_Tickets.* TO 'admin'@'localhost';
-GRANT SELECT, INSERT, DROP, UPDATE ON CI_NA_Tickets.Tickets TO 'empleado'@'localhost';
-GRANT SELECT, INSERT, DROP, UPDATE ON CI_NA_Tickets.Clientes TO 'empleado'@'localhost';
-GRANT SELECT, INSERT, DROP, UPDATE ON CI_NA_Tickets.Servicios TO 'empleado'@'localhost';
-GRANT SELECT, INSERT, DROP, UPDATE ON CI_NA_Tickets.Categoria TO 'empleado'@'localhost';
-GRANT SELECT, INSERT, DROP, UPDATE ON CI_NA_Tickets.Tickets TO 'client'@'localhost';
+GRANT ALL PRIVILEGES ON CI_NA_Tickets.* TO 'adminCINA'@'localhost';
 
 create table IF NOT EXISTS Categoria(
     id_categoria INT AUTO_INCREMENT NOT NULL UNIQUE,
     categoria VARCHAR(100),
     PRIMARY KEY (id_categoria)
 );
+
 
 CREATE TABLE IF NOT EXISTS Usuarios (
     id_usuario INT AUTO_INCREMENT NOT NULL UNIQUE,
@@ -38,17 +34,15 @@ CREATE TABLE IF NOT EXISTS Empleados (
 
 CREATE TABLE IF NOT EXISTS Clientes (
     id_cliente INT AUTO_INCREMENT UNIQUE NOT NULL,
-    versionServicio INT,
     id_usuario INT NOT NULL UNIQUE,
     PRIMARY KEY (id_cliente),
-    FOREIGN KEY (versionServicio) REFERENCES Servicios(versionServicio) ON DELETE CASCADE
     FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS Tickets (
     id_ticket INT AUTO_INCREMENT PRIMARY KEY,
     id_empleado INT NOT NULL,
-    email VARCHAR(100),
+    id_cliente INT NOT NULL,
     id_categoria INT NOT NULL,
     asunto VARCHAR(200) NOT NULL,
     descripcion VARCHAR(5000),
@@ -72,13 +66,14 @@ CREATE TABLE IF NOT EXISTS Licencias (
     FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente) ON DELETE SET NULL
 );
 
+GRANT SELECT, INSERT, DROP, UPDATE ON CI_NA_Tickets.Tickets TO 'empleadoCINA'@'localhost';
+GRANT SELECT, INSERT, DROP, UPDATE ON CI_NA_Tickets.Clientes TO 'empleadoCINA'@'localhost';
+GRANT SELECT, INSERT, DROP, UPDATE ON CI_NA_Tickets.Categoria TO 'empleadoCINA'@'localhost';
+GRANT SELECT, INSERT, DROP, UPDATE ON CI_NA_Tickets.Tickets TO 'clientCINA'@'localhost';
+
 -- INSERTS ESENCIALES
 INSERT INTO Categoria(categoria) VALUES ('Front End'), ('Back End');
-INSERT INTO Usuario(usuario, email, contrasena) VALUES
+INSERT INTO Usuarios(usuario, email, contrasena) VALUES
 ('adminFrontEnd', 'adminFrontEnd@ComputerInnovations.com', '1234qwerty'),
 ('adminBackEnd', 'adminBackEnd@ComputerInnovations.com', 'qwerty1234');
 INSERT INTO Empleados(id_usuario, id_categoria) VALUES (1, 1), (2, 2);
-
-/*SIEMPRE DEBE HABER POR LO MENOS 1 EMPLEADO: EL ADMINISTRADOR*/
-
-/*SI SE CREA UN TICKET Y NO HAY NINGUN TICKET SE ASGIGNA AL EMPLEADO ID:1 DE ESA CATEGORIA*/
