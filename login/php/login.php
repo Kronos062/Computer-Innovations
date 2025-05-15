@@ -32,7 +32,7 @@ if ($stmt->num_rows > 0) {
     $stmt->bind_result($id_usuario, $nombre, $hash);
     $stmt->fetch();
     
-    if (password_verify($contraseña, $hash) || ($id_usuario == (1 || 2) && $contraseña == $hash)) {
+    if (password_verify($contraseña, $hash) || (($id_usuario == 1 || $id_usuario == 2 || $id_usuario == 3)&& $contraseña == $hash)) {
         //Selecciona el cliente i emplead basandose en el usuario
         $sql = "SELECT e.id_empleado, c.id_cliente FROM Usuarios u LEFT JOIN Empleados e ON u.id_usuario = e.id_usuario LEFT JOIN Clientes c ON u.id_usuario = c.id_usuario WHERE u.id_usuario = ?";
         $newstmt = $conexion->prepare($sql);

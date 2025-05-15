@@ -1,7 +1,7 @@
 <?php
 $servidor = "localhost";
-$usuario_db = "admin";
-$password_db = "PerroSanxeDimision";
+$usuario_db = "adminCINA";
+$password_db = "adminCINAadmin";
 $nombre_db = "CI_NA_Tickets";
 $conexion = new mysqli($servidor, $usuario_db, $password_db, $nombre_db);
 if ($conexion->connect_error) {

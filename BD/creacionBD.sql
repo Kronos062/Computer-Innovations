@@ -18,7 +18,7 @@ create table IF NOT EXISTS Categoria(
 CREATE TABLE IF NOT EXISTS Usuarios (
     id_usuario INT AUTO_INCREMENT NOT NULL UNIQUE,
     usuario VARCHAR(50) UNIQUE NOT NULL,
-    nombreApellido VARCHAR(100),
+    nombreApellido VARCHAR(100) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
     contrasena VARCHAR(255) NOT NULL,
     PRIMARY KEY (id_usuario)
@@ -73,7 +73,9 @@ GRANT SELECT, INSERT, DROP, UPDATE ON CI_NA_Tickets.Tickets TO 'clientCINA'@'loc
 
 -- INSERTS ESENCIALES
 INSERT INTO Categoria(categoria) VALUES ('Front End'), ('Back End');
-INSERT INTO Usuarios(usuario, email, contrasena) VALUES
-('adminFrontEnd', 'adminFrontEnd@ComputerInnovations.com', '1234qwerty'),
-('adminBackEnd', 'adminBackEnd@ComputerInnovations.com', 'qwerty1234');
+INSERT INTO Usuarios(usuario, email, nombreApellido, contrasena) VALUES
+('adminFrontEnd', 'adminFrontEnd@ComputerInnovations.com', 'adminFrontEnd', '1234qwerty'),
+('adminBackEnd', 'adminBackEnd@ComputerInnovations.com', 'adminBackEnd','qwerty1234'),
+('testUser', 'test@ComputerInnovations.com', 'testUser','1234');
 INSERT INTO Empleados(id_usuario, id_categoria) VALUES (1, 1), (2, 2);
+INSERT INTO Clientes(id_usuario) VALUES (3);
