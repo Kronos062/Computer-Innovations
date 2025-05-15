@@ -27,18 +27,21 @@
 
     <div class="content">
       <h2>Crear Nuevo Ticket</h2>
-      <form id="ticketForm">
-        <input type="text" id="titulo" placeholder="Título del Ticket" required>
-        <textarea id="descripcion" placeholder="Descripción del Ticket" required></textarea>
-        <input type="text" id="lugar" placeholder="Lugar de la Incidencia" required>
-        <input type="text" id="afectado" placeholder="Afectado" required>
-        <select id="prioridad" placeholder="Prioridad" required>
-          <option value="Baja">Baja</option>
-          <option value="Media">Media</option>
-          <option value="Alta">Alta</option>
+      <form id="ticketForm" method="POST" action="../php/crearTicket.php">
+        <input type="text" name="asunto" id="titulo" placeholder="Título del Ticket" required>
+        <textarea name="descripcion" id="descripcion" placeholder="Descripción del Ticket" required></textarea>
+        <input type="text" name="direccion" id="lugar" placeholder="Lugar de la Incidencia" required>
+        <select name="IDcategoria" id="IDcategoria" placeholder="Categoria" required>
+            <option value=1>Front-End</option>
+            <option value=2>Back-End</option>
+          </select>
+        <select name="prioridad" id="prioridad" placeholder="Prioridad" required>
+          <option value=3>Baja</option>
+          <option value=2>Media</option>
+          <option value=1>Alta</option>
         </select>
         <div style="display: flex; gap: 10px; justify-content: center;">
-          <button type="button" class="submit-btn" onclick="crearTicket()">Mandar ticket</button>
+          <button type="submit" class="submit-btn">Mandar ticket</button>
           <button type="reset" class="submit-btn" onclick="limpiarFormulario()">Limpiar Formulario</button>
         </div>
       </form>
