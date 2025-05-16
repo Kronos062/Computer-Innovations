@@ -74,11 +74,9 @@
         <div class="footer">Neo Archi - Computer Innovations &copy; 2025</div>
     </div>
     <div class="user-bubble" id="userBubble" style="display: none;">
-        <ion-icon name="person-circle-outline" class="user-icon"></ion-icon>
-        <div class="logout-menu" id="logoutMenu">
-            <button id="logoutBtn">Cerrar sesión</button>
-        </div>
-    </div>
+    <ion-icon name="person-circle-outline" class="user-icon"></ion-icon>
+    <div class="logout-menu" id="logoutMenu"></div>
+</div>
 
 <script>
     function getCookie(name) {
@@ -88,41 +86,57 @@
     }
 
     const userLoggedIn = getCookie("usuario_nombre");
-    if (userLoggedIn) {
-        const userBubble = document.createElement("div");
-        userBubble.className = "user-bubble";
-        userBubble.innerHTML = `
-            <ion-icon name="person-circle-outline" class="user-icon"></ion-icon>
-            <span class="username">${userLoggedIn}</span>
-            <div class="logout-menu" id="logoutMenu">
-                <button id="logoutBtn">Cerrar sesión</button>
-            </div>
-        `;
-        document.body.appendChild(userBubble);
+if (userLoggedIn) {
+    const userBubble = document.getElementById("userBubble");
+    userBubble.style.display = "block";
 
-        let menuVisible = false;
+    // Agregar nombre de usuario debajo del botón
+    const logoutMenu = document.getElementById("logoutMenu");
+    
+    const logoutBtn = document.createElement("button");
+    logoutBtn.id = "logoutBtn";
+    logoutBtn.textContent = "Cerrar sesión";
 
-        userBubble.addEventListener('click', () => {
-            menuVisible = !menuVisible;
-            document.getElementById("logoutMenu").style.display = menuVisible ? 'block' : 'none';
-        });
+    const usernameSpan = document.createElement("span");
+    usernameSpan.className = "username";
+    usernameSpan.textContent = userLoggedIn;
+    usernameSpan.style.display = "block"; // para forzar salto de línea
+    usernameSpan.style.marginTop = "8px";
+    usernameSpan.style.textAlign = "center";
 
-        document.addEventListener("click", (e) => {
-            if (e.target.id === "logoutBtn") {
-                fetch("../php/logout.php")
-                    .then(res => {
-                        if (res.ok) {
-                            document.cookie = "usuario_nombre=; Max-Age=0; path=/";
-                            document.cookie = "id_usuario=; Max-Age=0; path=/";
-                            window.location.href = "../html/login.html";
-                        } else {
-                            alert("Error al cerrar sesión.");
-                        }
-                    }).catch(err => console.error("Error:", err));
-            }
-        });
-    }
-</script>    
+    // Limpiar y añadir en orden: botón primero, luego nombre
+    logoutMenu.innerHTML = "";
+    logoutMenu.appendChild(logoutBtn);
+    logoutMenu.appendChild(usernameSpan);
+
+    let menuVisible = false;
+
+    userBubble.addEventListener('click', () => {
+        menuVisible = !menuVisible;
+        logoutMenu.style.display = menuVisible ? 'block' : 'none';
+    });
+
+    document.addEventListener("click", (e) => {
+        if (e.target.id === "logoutBtn") {
+            fetch("../php/logout.php")
+                .then(res => {
+                    if (res.ok) {
+                        document.cookie = "usuario_nombre=; Max-Age=0; path=/";
+                        document.cookie = "id_usuario=; Max-Age=0; path=/";
+                        window.location.href = "../html/login.html";
+                    } else {
+                        alert("Error al cerrar sesión.");
+                    }
+                }).catch(err => console.error("Error:", err));
+        }
+
+        if (!userBubble.contains(e.target)) {
+            logoutMenu.style.display = 'none';
+            menuVisible = false;
+        }
+    });
+}
+</script>
 
 <script>
     const isMainPage = window.location.pathname.includes("main.html");
