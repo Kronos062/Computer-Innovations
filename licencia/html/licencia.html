@@ -77,50 +77,62 @@
         </div>
     </div>
 
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const userLoggedIn = getCookie("usuario_nombre");
-        if (userLoggedIn) {
-            const userBubble = document.getElementById("userBubble");
-            userBubble.style.display = "block";
+<script>
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+    }
 
-            userBubble.textContent = userLoggedIn;
+    const userLoggedIn = getCookie("usuario_nombre");
+    if (userLoggedIn) {
+        const userBubble = document.createElement("div");
+        userBubble.className = "user-bubble";
+        userBubble.innerHTML = `
+            <ion-icon name="person-circle-outline" class="user-icon"></ion-icon>
+            <span class="username">${userLoggedIn}</span>
+            <div class="logout-menu" id="logoutMenu">
+                <button id="logoutBtn">Cerrar sesión</button>
+            </div>
+        `;
+        document.body.appendChild(userBubble);
 
-            const navBar = document.querySelector(".nav-bar");
+        let menuVisible = false;
+
+        userBubble.addEventListener('click', () => {
+            menuVisible = !menuVisible;
+            document.getElementById("logoutMenu").style.display = menuVisible ? 'block' : 'none';
+        });
+
+        document.addEventListener("click", (e) => {
+            if (e.target.id === "logoutBtn") {
+                fetch("../php/logout.php")
+                    .then(res => {
+                        if (res.ok) {
+                            document.cookie = "usuario_nombre=; Max-Age=0; path=/";
+                            document.cookie = "id_usuario=; Max-Age=0; path=/";
+                            window.location.href = "../html/login.html";
+                        } else {
+                            alert("Error al cerrar sesión.");
+                        }
+                    }).catch(err => console.error("Error:", err));
+            }
+        });
+    }
+</script>    
+
+<script>
+    const isMainPage = window.location.pathname.includes("main.html");
+    if (!isMainPage && userLoggedIn) {
+        const navBar = document.querySelector(".nav-bar");
+        if (navBar) {
             const link = document.createElement("a");
-            link.href = "../ticketing/html/ticketing.html"; 
+            link.href = "../../ticketing/html/ticketing.html"; 
             link.textContent = "| Ticketing";
             link.className = "ticketing-tab";
             navBar.appendChild(link);
-
-            let menuVisible = false;
-            userBubble.addEventListener('click', () => {
-                menuVisible = !menuVisible;
-                document.getElementById("logoutMenu").style.display = menuVisible ? 'block' : 'none';
-            });
-
-            document.addEventListener("click", (e) => {
-                if (e.target.id === "logoutBtn") {
-                    fetch("../../login/php/logout.php")
-                        .then(res => {
-                            if (res.ok) {
-                                document.cookie = "usuario_nombre=; Max-Age=0; path=/";
-                                document.cookie = "id_usuario=; Max-Age=0; path=/";
-                                window.location.href = "../../login/html/login.html";
-                            } else {
-                                alert("Error al cerrar sesión.");
-                            }
-                        }).catch(err => console.error("Error:", err));
-                }
-            });
         }
-
-        function getCookie(name) {
-            let match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-            if (match) return match[2];
-            return null;
-        }
-    });
+    }
 </script>
 
 <script>
