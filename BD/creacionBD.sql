@@ -58,17 +58,28 @@ CREATE TABLE IF NOT EXISTS Tickets (
     FOREIGN KEY (id_categoria) REFERENCES Categoria(id_categoria) ON DELETE CASCADE
 );
 
+CREATE TABLE IF NOT EXISTS pending_emails (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255),
+    subject VARCHAR(255),
+    message TEXT,
+    sent TINYINT(1) DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 CREATE TABLE IF NOT EXISTS Licencias (
     id_licencia INT AUTO_INCREMENT PRIMARY KEY,
     codigo VARCHAR(16) UNIQUE NOT NULL,
     id_cliente INT,
     fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente) ON DELETE SET NULL
+    FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente) ON DELETE CASCADE
 );
 
 GRANT SELECT, INSERT, DROP, UPDATE ON CI_NA_Tickets.Tickets TO 'empleadoCINA'@'localhost';
 GRANT SELECT, INSERT, DROP, UPDATE ON CI_NA_Tickets.Clientes TO 'empleadoCINA'@'localhost';
 GRANT SELECT, INSERT, DROP, UPDATE ON CI_NA_Tickets.Categoria TO 'empleadoCINA'@'localhost';
+GRANT SELECT, INSERT, DROP, UPDATE ON CI_NA_Tickets.pending_emails TO 'empleadoCINA'@'localhost';
+GRANT SELECT, INSERT, DROP, UPDATE ON CI_NA_Tickets.Licencias TO 'empleadoCINA'@'localhost';
 GRANT SELECT, INSERT, DROP, UPDATE ON CI_NA_Tickets.Tickets TO 'clientCINA'@'localhost';
 
 -- INSERTS ESENCIALES
