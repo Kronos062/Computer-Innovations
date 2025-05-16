@@ -90,7 +90,6 @@ if (userLoggedIn) {
     const userBubble = document.getElementById("userBubble");
     userBubble.style.display = "block";
 
-    // Agregar nombre de usuario debajo del botón
     const logoutMenu = document.getElementById("logoutMenu");
     
     const logoutBtn = document.createElement("button");
@@ -100,11 +99,10 @@ if (userLoggedIn) {
     const usernameSpan = document.createElement("span");
     usernameSpan.className = "username";
     usernameSpan.textContent = userLoggedIn;
-    usernameSpan.style.display = "block"; // para forzar salto de línea
+    usernameSpan.style.display = "block";
     usernameSpan.style.marginTop = "8px";
     usernameSpan.style.textAlign = "center";
 
-    // Limpiar y añadir en orden: botón primero, luego nombre
     logoutMenu.innerHTML = "";
     logoutMenu.appendChild(logoutBtn);
     logoutMenu.appendChild(usernameSpan);
@@ -118,7 +116,7 @@ if (userLoggedIn) {
 
     document.addEventListener("click", (e) => {
         if (e.target.id === "logoutBtn") {
-            fetch("../php/logout.php")
+            fetch("../../login/php/logout.php")
                 .then(res => {
                     if (res.ok) {
                         document.cookie = "usuario_nombre=; Max-Age=0; path=/";

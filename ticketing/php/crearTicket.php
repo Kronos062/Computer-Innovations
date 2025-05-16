@@ -4,7 +4,7 @@ session_start();
 //Imports
 include '../../conexion/conexion.php';
 
-$id_cliente = $_SESSION['id_usuario']; // = el id de la sesion
+$id_cliente = $_SESSION['cliente_id']; // = el id de la sesion
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ( $id_cliente != null) {
         //Declarar variables
@@ -40,9 +40,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         try {
             //Insert del ticket
-            $query = "INSERT INTO CI_NA_Tickets.Tickets (id_empleado, id_usuario, id_categoria, asunto, descripcion, direccion, prioridad) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            $query = "INSERT INTO CI_NA_Tickets.Tickets (id_empleado, id_cliente, id_categoria, asunto, descripcion, direccion, prioridad) VALUES (?, ?, ?, ?, ?, ?, ?)";
             $stmt = $conexion->prepare($query);
-            $stmt->bind_param("iiisssi", $id_empleado, $id_usuario, $IDcategoria, $asunto, $descripcion, $direccion, $prioridad);
+            $stmt->bind_param("iiisssi", $id_empleado, $id_cliente, $IDcategoria, $asunto, $descripcion, $direccion, $prioridad);
             $stmt->execute();
             $stmt->store_result();
         } catch (Eception) {
