@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $stmt->bind_param("iiisssi", $id_empleado, $id_cliente, $IDcategoria, $asunto, $descripcion, $direccion, $prioridad);
             $stmt->execute();
             $stmt->store_result();
-        } catch (Eception) {
+        } catch (Exception) {
             header("Location: ../html/crearTicket.html#di");
         }
 

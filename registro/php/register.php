@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt_check = $conexion->prepare($sql_check);
     $stmt_check->bind_param("s", $correo);
     $stmt_check->execute();
-    $stmt_check->get_result();
+    $stmt_check->store_result();
 
     if ($stmt_check->num_rows > 0) {
         $stmt_check->close();

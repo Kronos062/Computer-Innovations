@@ -24,6 +24,7 @@
     } else {
         echo "<p>No has iniciado sesión.</p>";
         echo "<a href='../../login/html/login.html'>Iniciar Sesión</a>";
+        exit;
     }
     $sesionCliente = NULL;
     $sesionEmpleado = NULL;
@@ -91,6 +92,6 @@
         }
             ?>
     </div>
-    <a href="crearTicket.html" class="button-class">
+    <a href="crearTicket.html" class="button-class">Crear Ticket</a>
 </body>
 </html>

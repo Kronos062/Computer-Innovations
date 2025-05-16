@@ -19,7 +19,7 @@ include '../../conexion/conexion.php';
         echo "</pre>";
         $ticket = $_SESSION['tickets'][$_POST['id_ticket']];
         
-        if (isset($_ticket['visitado']) && $_ticket['visitado'] === false) {
+        if (isset($ticket['visitado']) && $ticket['visitado'] === false) {
             try {
                 $query = "UPDATE Tickets SET visitado = true WHERE id_ticket = ?";
                 $stmt = $conexion->prepare($query);
