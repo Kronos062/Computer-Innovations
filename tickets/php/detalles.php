@@ -40,7 +40,6 @@ include '../../conexion/conexion.php';
     <p><strong>Descrpicion:</stong> <?= $ticket['descripcion']?></p>
     <p><strong>Estado:</strong> <?= $ticket['estado']?></p>
     <p><strong>Fecha de emisión:</strong> <?= $ticket['fechaEmision']?></p>
-    <p><strong>Fecha de cierre:</strong> <?= $ticket['fechaCierre'] ?? ''?></p>
     <p><strong>Solcuion:</strong> <?= $ticket['solucion'] ?? "Sin solución todavía."?></p>
     </br>
     </div>
