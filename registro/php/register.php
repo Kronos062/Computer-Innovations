@@ -4,18 +4,18 @@ include '../../conexion/conexion.php';
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $nombre = trim($_POST['username'] ?? '');
     $correo = trim($_POST['email'] ?? '');
-    $contraseñaSinHash = $_POST['password'] ?? '';
-    $confirmarContraseña = $_POST['confirm-password'] ?? ''; 
-    if ($contraseñaSinHash !== $confirmarContraseña) {
-        echo "<script>alert('Las contraseñas no coinciden.');</script>";
+    $contrasenaSinHash = $_POST['password'] ?? '';
+    $confirmarContrasena = $_POST['confirm-password'] ?? ''; 
+    if ($contrasenaSinHash !== $confirmarContrasena) {
+        echo "<script>alert('Las contrasenas no coinciden.');</script>";
         header("Refresh:0");
         //A falta de testear:
         header('Location: https://computerinnovations.com/web/registro/html/registro.html#pnc');
         die;
     }
-    $contraseña = password_hash($contraseñaSinHash, PASSWORD_DEFAULT);
+    $contrasena = password_hash($contrasenaSinHash, PASSWORD_DEFAULT);
 
-    if ($nombre === '' || $correo === '' || $contraseña === '' || $confirmarContraseña === '') {
+    if ($nombre === '' || $correo === '' || $contrasena === '' || $confirmarContrasena === '') {
         echo "<script>alert('Todos los campos son obligatorios.');</script>";
         header("Refresh:0");
         //A falta de testear:
@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $sql = "INSERT INTO Usuarios (usuario, nombreApellido, email, contrasena) VALUES (?, ?, ?, ?)";
     $stmt = $conexion->prepare($sql);
     $usuario = explode("@", $correo)[0];
-    $stmt->bind_param("ssss", $usuario, $nombre, $correo, $contraseña);
+    $stmt->bind_param("ssss", $usuario, $nombre, $correo, $contrasena);
 
     if ($stmt->execute()) {
         echo "<script>alert('¡Te has registrado con éxito!'); window.location.href='../../login/html/login.html';</script>";
