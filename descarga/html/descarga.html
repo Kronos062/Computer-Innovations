@@ -80,61 +80,69 @@
         </div>
     </div>
 
-    <script>
-        function getCookie(name) {
-            const value = `; ${document.cookie}`;
-            const parts = value.split(`; ${name}=`);
-            if (parts.length === 2) return parts.pop().split(';').shift();
-        }
+<script>
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+    }
 
-        const userLoggedIn = getCookie("usuario_nombre");
-        
-        if (userLoggedIn) {
-            const userBubble = document.getElementById("userBubble");
-            userBubble.style.display = "block";
+    const userLoggedIn = getCookie("usuario_nombre");
+    
+    if (userLoggedIn) {
+        const userBubble = document.getElementById("userBubble");
 
-            let menuVisible = false;
-            userBubble.addEventListener('click', () => {
-                menuVisible = !menuVisible;
-                document.getElementById("logoutMenu").style.display = menuVisible ? 'block' : 'none';
-            });
+        userBubble.innerHTML = `
+            <ion-icon name="person-circle-outline" class="user-icon"></ion-icon>
+            <span class="username">${userLoggedIn}</span>
+            <div class="logout-menu" id="logoutMenu">
+                <button id="logoutBtn">Cerrar sesión</button>
+            </div>
+        `;
+        userBubble.style.display = "block";
 
-            document.addEventListener("click", (e) => {
-                if (e.target.id === "logoutBtn") {
-                    fetch("../../login/php/logout.php")
-                        .then(res => {
-                            if (res.ok) {
-                                document.cookie = "usuario_nombre=; Max-Age=0; path=/";
-                                document.cookie = "id_usuario=; Max-Age=0; path=/";
-                                window.location.href = "../../login/html/login.html";
-                            } else {
-                                alert("Error al cerrar sesión.");
-                            }
-                        }).catch(err => console.error("Error:", err));
-                }
-            });
+        let menuVisible = false;
+        userBubble.addEventListener('click', () => {
+            menuVisible = !menuVisible;
+            document.getElementById("logoutMenu").style.display = menuVisible ? 'block' : 'none';
+        });
 
-            const navBar = document.getElementById("navBar");
-            const ticketingLink = document.createElement("a");
-            ticketingLink.href = "../ticketing/html/ticketing.html";
-            ticketingLink.textContent = "| Ticketing";
-            navBar.appendChild(ticketingLink);
-        }
-    </script>
-
-    <script>
-        document.getElementById('btnSwitch').addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-bs-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-bs-theme', newTheme);
-
-            const icon = document.querySelector('#btnSwitch ion-icon');
-            if (newTheme === 'dark') {
-                icon.setAttribute('name', 'moon');
-            } else {
-                icon.setAttribute('name', 'sunny');
+        document.addEventListener("click", (e) => {
+            if (e.target.id === "logoutBtn") {
+                fetch("../../login/php/logout.php")
+                    .then(res => {
+                        if (res.ok) {
+                            document.cookie = "usuario_nombre=; Max-Age=0; path=/";
+                            document.cookie = "id_usuario=; Max-Age=0; path=/";
+                            window.location.href = "../../login/html/login.html";
+                        } else {
+                            alert("Error al cerrar sesión.");
+                        }
+                    }).catch(err => console.error("Error:", err));
             }
         });
-    </script>
+
+        const navBar = document.getElementById("navBar");
+        const ticketingLink = document.createElement("a");
+        ticketingLink.href = "../ticketing/html/ticketing.html";
+        ticketingLink.textContent = "| Ticketing";
+        navBar.appendChild(ticketingLink);
+    }
+</script>
+
+<script>
+    document.getElementById('btnSwitch').addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-bs-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-bs-theme', newTheme);
+
+        const icon = document.querySelector('#btnSwitch ion-icon');
+        if (newTheme === 'dark') {
+            icon.setAttribute('name', 'moon');
+        } else {
+            icon.setAttribute('name', 'sunny');
+        }
+    });
+</script>
 </body>
 </html>
