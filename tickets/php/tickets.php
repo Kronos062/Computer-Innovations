@@ -5,24 +5,33 @@
 <!DOCTYPE html>
 <html lang="es" data-bs-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>C.I. - Lista de tickets</title>
-    <link rel="stylesheet" href="../css/styles-tickets.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/styles-tickets.css" />
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
-    <div class="window">
-        <div class="header">Centro de Incidencias - Lista de Tickets</div>
+    <div class="controles" style="text-align:right; padding:10px;">
+        <button id="btnSwitch" class="btn btn-outline-secondary">
+            <ion-icon name="moon" style="font-size: 24px;"></ion-icon>
+        </button>
+    </div>
 
-        <div class="nav-bar">
-            <a href="../../main/html/main.html">Página Principal</a>
-            <a href="../../descarga/html/descarga.html">Descargar</a>
-            <a href="../../login/html/login.html">Iniciar Sesión</a>
-        </div>
+    <div class="window container my-4 p-4 border rounded shadow-sm">
+        <div class="header mb-3 text-center fs-4 fw-bold">Centro de Incidencias - Lista de Tickets</div>
 
-        <h2 style="text-align:center;">Gestiona tus tickets</h2>
+        <nav class="nav justify-content-center mb-4">
+            <a class="nav-link" href="../../main/html/main.html">Página Principal</a>
+            <a class="nav-link" href="../../descarga/html/descarga.html">Descargar</a>
+            <a class="nav-link" href="../../login/html/login.html">Iniciar Sesión</a>
+        </nav>
 
-        <div id="listaTickets">
+        <h2 class="text-center mb-4">Gestiona tus tickets</h2>
+
+        <div id="listaTickets" class="list-group">
         <?php
             if (isset($_SESSION['cliente_id'])) {
                 $id_cliente = $_SESSION['cliente_id'];
@@ -31,8 +40,8 @@
                 $id_empleado = $_SESSION['empleado_id'];
                 $id_cliente = NULL;
             } else {
-                echo "<p>No has iniciado sesión.</p>";
-                echo "<a href='../../login/html/login.html'>Iniciar Sesión</a>";
+                echo "<p class='text-center'>No has iniciado sesión.</p>";
+                echo "<p class='text-center'><a href='../../login/html/login.html'>Iniciar Sesión</a></p>";
                 exit;
             }
 
@@ -61,19 +70,18 @@
 
             $contadorTickets = 1;
             if ($resultat->num_rows <= 0) {
-                echo "<p>No hay tickets encontrados para este usuario.</p>";
-                echo "<a href='../../crearTicket/html/crearTicket.html'>Crear Ticket</a>";
+                echo "<p class='text-center'>No hay tickets encontrados para este usuario.</p>";
+                echo "<p class='text-center'><a href='../../crearTicket/html/crearTicket.html'>Crear Ticket</a></p>";
             } else {
                 while ($row = $resultat->fetch_assoc()) {
                     $_SESSION['tickets'][$row['id_ticket']] = $row;
-
                     echo "
-                    <div class='ticket'>
-                        <h3>{$contadorTickets}. {$row['asunto']}</h3>
+                    <div class='list-group-item'>
+                        <h5>{$contadorTickets}. {$row['asunto']}</h5>
                         <p><strong>Estado:</strong> {$row['estado']}</p>
                         <form method='POST' action='detalles.php'>
-                            <input type='hidden' name='id_ticket' value='{$row['id_ticket']}'>
-                            <input type='submit' name='detalles' value='Detalles'>
+                            <input type='hidden' name='id_ticket' value='{$row['id_ticket']}' />
+                            <input type='submit' name='detalles' class='btn btn-primary btn-sm' value='Detalles' />
                         </form>
                     </div>
                     ";
@@ -83,13 +91,25 @@
         ?>
         </div>
 
-        <div style="text-align:center; margin-top: 20px;">
-            <a href="crearTicket.html" class="button-class">Crear Ticket</a>
+        <div class="text-center mt-4">
+            <a href="../../crearTicket/html/crearTicket.html" class="btn btn-success">Crear Ticket</a>
         </div>
 
-        <div class="footer">
+        <footer class="footer mt-5 text-center text-muted">
             &copy; <?php echo date("Y"); ?> Centro de Incidencias
-        </div>
+        </footer>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.getElementById('btnSwitch').addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-bs-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-bs-theme', newTheme);
+
+            const icon = document.querySelector('#btnSwitch ion-icon');
+            icon.setAttribute('name', newTheme === 'dark' ? 'moon' : 'sunny');
+        });
+    </script>
 </body>
 </html>
