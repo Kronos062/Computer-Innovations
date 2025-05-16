@@ -79,3 +79,12 @@ INSERT INTO Usuarios(usuario, email, nombreApellido, contrasena) VALUES
 ('testUser', 'test@ComputerInnovations.com', 'testUser','1234');
 INSERT INTO Empleados(id_usuario, id_categoria) VALUES (1, 1), (2, 2);
 INSERT INTO Clientes(id_usuario) VALUES (3);
+
+CREATE INDEX idx_empleados_id_categoria 
+ON Empleados (id_categoria);
+CREATE INDEX idx_tickets_id_empleado 
+ON Tickets (id_empleado);
+CREATE INDEX idx_tickets_id_categoria 
+ON Tickets (id_categoria);
+CREATE INDEX idx_tickets_id_cliente 
+ON Tickets (id_cliente);
