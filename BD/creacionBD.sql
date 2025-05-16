@@ -83,7 +83,7 @@ GRANT SELECT, INSERT, DROP, UPDATE ON CI_NA_Tickets.Licencias TO 'empleadoCINA'@
 GRANT SELECT, INSERT, DROP, UPDATE ON CI_NA_Tickets.Tickets TO 'clientCINA'@'localhost';
 
 -- INSERTS ESENCIALES
-INSERT INTO Categoria(categoria) VALUES ('Front End'), ('Back End');
+INSERT INTO Categoria(categoria) VALUES ('Programario'), ('Distribución');
 INSERT INTO Usuarios(usuario, email, nombreApellido, contrasena) VALUES
 ('adminFrontEnd', 'adminFrontEnd@ComputerInnovations.com', 'adminFrontEnd', '1234qwerty'),
 ('adminBackEnd', 'adminBackEnd@ComputerInnovations.com', 'adminBackEnd','qwerty1234'),

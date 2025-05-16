@@ -1,5 +1,5 @@
 <?php
-require_once '../../config/db.php';
+require_once '../../conexion/conexion.php';
 
 function generarCodigoLicencia($longitud = 16) {
     $caracteres = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -13,12 +13,7 @@ function generarCodigoLicencia($longitud = 16) {
 $codigo = generarCodigoLicencia();
 $id_cliente = $_POST['id_cliente'] ?? null;
 
-$conn = new mysqli($host, $user, $pass, $db);
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
-
-$stmt = $conn->prepare("INSERT INTO Licencias (codigo, id_cliente) VALUES (?, ?)");
+$stmt = $conexion->prepare("INSERT INTO Licencias (codigo, id_cliente) VALUES (?, ?)");
 $stmt->bind_param("si", $codigo, $id_cliente);
 $stmt->execute();
 
@@ -29,5 +24,5 @@ if ($stmt->affected_rows > 0) {
 }
 
 $stmt->close();
-$conn->close();
+$conexion->close();
 ?>

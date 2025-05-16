@@ -38,9 +38,9 @@
     $variableSesion = $sesionCliente ?? $sesionEmpleado;
 
     if ($variableSesion == "id_empleado"){
-        $query = "SELECT id_ticket, asunto, descripcion, solucion, estado, visitado, fechaEmision FROM CI_NA_Tickets.Tickets WHERE $variableSesion = ? ORDER BY visitado ASC, FIELD(estado, 'Abierto', 'Solucionado', 'Devuelto'), fechaEmision ASC";
+        $query = "SELECT id_ticket, asunto, descripcion, solucion, estado, visitado, fechaEmision, fechaCierre FROM CI_NA_Tickets.Tickets WHERE $variableSesion = ? ORDER BY visitado ASC, FIELD(estado, 'Abierto', 'Solucionado', 'Devuelto'), fechaEmision ASC";
     } else {
-        $query = "SELECT id_ticket, asunto, descripcion, solucion, estado, fechaEmision FROM CI_NA_Tickets.Tickets WHERE $variableSesion = ? ORDER BY FIELD(estado, 'Abierto', 'Solucionado', 'Devuelto'), fechaEmision ASC";
+        $query = "SELECT id_ticket, asunto, descripcion, solucion, estado, fechaEmision, fechaCierre FROM CI_NA_Tickets.Tickets WHERE $variableSesion = ? ORDER BY FIELD(estado, 'Abierto', 'Solucionado', 'Devuelto'), fechaEmision ASC";
     }
     $stmt = $conexion->prepare($query);
     $stmt->bind_param("i", $id);
