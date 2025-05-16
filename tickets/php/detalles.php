@@ -14,9 +14,6 @@ include '../../conexion/conexion.php';
 <body>
 <?php
     if(isset($_POST['id_ticket']) && isset($_SESSION['tickets'][$_POST['id_ticket']])) {
-        echo "<pre>";
-        print_r($_SESSION);
-        echo "</pre>";
         $ticket = $_SESSION['tickets'][$_POST['id_ticket']];
         
         if (isset($ticket['visitado']) && $ticket['visitado'] === false) {
