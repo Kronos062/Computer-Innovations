@@ -7,19 +7,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $contrasenaSinHash = $_POST['password'] ?? '';
     $confirmarContrasena = $_POST['confirm-password'] ?? ''; 
     if ($contrasenaSinHash !== $confirmarContrasena) {
-        echo "<script>alert('Las contrasenas no coinciden.');</script>";
-        header("Refresh:0");
         //A falta de testear:
-        header('Location: https://computerinnovations.com/web/registro/html/registro.html#pnc');
+        header('Location: ../html/registro.html#pnc');
         die;
     }
     $contrasena = password_hash($contrasenaSinHash, PASSWORD_DEFAULT);
 
     if ($nombre === '' || $correo === '' || $contrasena === '' || $confirmarContrasena === '') {
-        echo "<script>alert('Todos los campos son obligatorios.');</script>";
-        header("Refresh:0");
         //A falta de testear:
-        header('Location: https://computerinnovations.com/web/registro/html/registro.html#fi');
+        header('Location: ../html/registro.html#fi');
         die;
     }
 
@@ -30,11 +26,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt_check->get_result();
 
     if ($stmt_check->num_rows > 0) {
-        echo "<script>alert('El correo ya está asociado a una cuenta.');</script>";
         $stmt_check->close();
         $conexion->close();
         //A falta de testear:
-        header('Location: https://computerinnovations.com/web/registro/html/registro.html#ca');
+        header('Location: ../html/registro.html#ca');
         die;
     } else {
         $stmt_check->close();
@@ -46,14 +41,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt->bind_param("ssss", $usuario, $nombre, $correo, $contrasena);
 
     if ($stmt->execute()) {
-        echo "<script>alert('¡Te has registrado con éxito!'); window.location.href='../../login/html/login.html';</script>";
         //A falta de testear:
-        header('Location: https://computerinnovations.com/web/login/html/login.html');
+        header('Location: ../../login/html/login.html');
         die;
     } else {
-        echo "<script>alert('Error al registrar usuario.');</script>";
         //A falta de testear:
-        header('Location: https://computerinnovations.com/web/registro/html/registro.html#ei');
+        header('Location: ../html/registro.html#ei');
         die;
     }
 

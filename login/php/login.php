@@ -4,9 +4,7 @@ session_start();
 
 if ($_SERVER["REQUEST_METHOD"] === "GET") {
     if (isset($_SESSION['usuario_id'])) {
-        echo ["logueado" => true, "nombre" => $_SESSION['usuario_nombre']];
-        echo "<h3>Ya estás logeado {$_SESSION['usuario_nombre']}</h3>";
-        echo "<a href='../../main/main.html'>Volver al inicio</a>";
+        header('Location: ../../main/html/main.html');
     } else {
         echo json_encode(["logueado" => false]);
     }
@@ -55,7 +53,6 @@ if ($stmt->num_rows > 0) {
         setcookie('id_usuario', $id_usuario, time() + 3600, '/');
         $_SESSION['usuario_id'] = $id_usuario;
         $_SESSION['usuario_nombre'] = $nombre;
-        echo json_encode(["mensaje" => "Has iniciado sesión correctamente"]);
         header("Location: ../../main/html/main.html");
     } else {
         header('Location: ../html/login.html#pi');
